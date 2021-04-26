@@ -6,6 +6,7 @@ import useLandingPage from "../hooks/useLandingPage/useLandingPage";
 import Hero from "../components/AppComponents/Hero/Main";
 import DefenseSection from "../components/AppComponents/DefenseSection";
 import Testimonials from "../components/AppComponents/Testimonials/Main";
+import Contact from "../components/AppComponents/Contact/Main";
 
 export type MenuItem = {
   menuName: string;
@@ -14,6 +15,8 @@ export type MenuItem = {
 
 export default function Home() {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  const contactSectionRef = React.useRef<HTMLDivElement>(null);
 
   const toggleLoading = (loading: boolean) => {
     setIsLoading(loading);
@@ -39,6 +42,13 @@ export default function Home() {
       component: <Testimonials />,
       ref: null,
       hidden: true,
+    },
+
+    {
+      label: "Contato",
+      component: <Contact loadingFn={() => console.log("not now")} />,
+      ref: contactSectionRef,
+      hidden: false,
     },
   ]);
 

@@ -38,7 +38,7 @@ export const styledTheme: StyledTheme = {
       main: "#8A95D3",
       light: "#ACB6F1",
       dark: "#4C58A4",
-      darker: "#232d67",
+      darker: "#4e5ba5",
       contrastText: "#fff",
     },
 
