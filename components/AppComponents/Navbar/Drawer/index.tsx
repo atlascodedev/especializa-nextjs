@@ -77,7 +77,7 @@ const LayoutDrawer = ({
         <List disablePadding>
           <ListItem style={{ padding: "0px" }} divider>
             <LayoutDrawerImageContainer backgroundColor={backgroundColor}>
-              <img src={logo} alt="Logo" />
+              <img src={"/images/logo.svg"} alt="Logo" />
             </LayoutDrawerImageContainer>
           </ListItem>
 

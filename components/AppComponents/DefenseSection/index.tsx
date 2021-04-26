@@ -61,51 +61,35 @@ const DefenseSection = (props: Props) => {
           Por que escolher a <span>Consultoria Especializa</span>?
         </DefenseSectionTitle>
         <DefenseSectionContainer>
-          <Slide
-            in={defenseAnimation}
-            direction={isBigDevice ? "up" : "left"}
-            timeout={{ enter: 750 }}
-          >
-            <div>
-              <DefenseCard
-                icon={Assessment}
-                text={
-                  "A Consultoria Especializa acredita em o que faz; empresas que trabalham junto com a Especializa obtém retornos claros e objetivos"
-                }
-                title={"Resultados"}
-              />
-            </div>
-          </Slide>
-          <Slide
-            in={defenseAnimation}
-            direction={isBigDevice ? "up" : "left"}
-            timeout={{ enter: 950 }}
-          >
-            <div>
-              <DefenseCard
-                icon={EmojiObjects}
-                text={
-                  "Através do trabalho realizado com diversas instituições educacionais, conseguimos analisar a situação por diversos ângulos e determinar o caminho certo para ajudar sua instituição atingir seus objetivos."
-                }
-                title={"Perspectiva"}
-              />
-            </div>
-          </Slide>
-          <Slide
-            in={defenseAnimation}
-            direction={isBigDevice ? "up" : "left"}
-            timeout={{ enter: 1150 }}
-          >
-            <div>
-              <DefenseCard
-                icon={AccountBalance}
-                text={
-                  "A Consultoria Especializa auxiliará formar e/ou reforçar os alicerces da sua instituição, garantindo que seus funcionários e alunos consigam alcançar metas e obter sucesso duradouro."
-                }
-                title={"Estrutura"}
-              />
-            </div>
-          </Slide>
+          <div>
+            <DefenseCard
+              icon={Assessment}
+              text={
+                "A Consultoria Especializa acredita em o que faz; empresas que trabalham junto com a Especializa obtém retornos claros e objetivos"
+              }
+              title={"Resultados"}
+            />
+          </div>
+
+          <div>
+            <DefenseCard
+              icon={EmojiObjects}
+              text={
+                "Através do trabalho realizado com diversas instituições educacionais, conseguimos analisar a situação por diversos ângulos e determinar o caminho certo para ajudar sua instituição atingir seus objetivos."
+              }
+              title={"Perspectiva"}
+            />
+          </div>
+
+          <div>
+            <DefenseCard
+              icon={AccountBalance}
+              text={
+                "A Consultoria Especializa auxiliará formar e/ou reforçar os alicerces da sua instituição, garantindo que seus funcionários e alunos consigam alcançar metas e obter sucesso duradouro."
+              }
+              title={"Estrutura"}
+            />
+          </div>
         </DefenseSectionContainer>
       </DefenseSectionRoot>
     </div>

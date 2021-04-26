@@ -83,6 +83,7 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 45vw;
   display: none;
+  transform: rotateY(180deg);
 
   img {
     width: 100%;

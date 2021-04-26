@@ -4,6 +4,7 @@ import React from "react";
 import AppLayout from "../layout/AppLayout";
 import useLandingPage from "../hooks/useLandingPage/useLandingPage";
 import Hero from "../components/AppComponents/Hero/Main";
+import DefenseSection from "../components/AppComponents/DefenseSection";
 
 export type MenuItem = {
   menuName: string;
@@ -23,6 +24,13 @@ export default function Home() {
       component: <Hero />,
       ref: null,
       hidden: false,
+    },
+
+    {
+      label: "Defense section",
+      component: <DefenseSection />,
+      ref: null,
+      hidden: true
     },
   ]);
 
