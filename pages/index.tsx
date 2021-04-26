@@ -8,10 +8,53 @@ import DefenseSection from "../components/AppComponents/DefenseSection";
 import Testimonials from "../components/AppComponents/Testimonials/Main";
 import Contact from "../components/AppComponents/Contact/Main";
 import Partners from "../components/AppComponents/Partners/Main";
+import Posts from "../components/AppComponents/BlogList/Main";
+import { BlogPostType } from "../@types";
+import * as faker from "faker";
 
 export type MenuItem = {
   menuName: string;
   reference: React.RefObject<HTMLElement> | null;
+};
+
+const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
+  if (amount && amount > 0) {
+    let blogPostTempArray: BlogPostType[] = [];
+
+    for (let i = 0; i < amount; i++) {
+      let blogPostTempInner: BlogPostType = {
+        blogActive: true,
+        blogDescription: faker.lorem.paragraph(),
+        blogPost: faker.lorem.paragraphs(10),
+        blogTitle: faker.lorem.sentence(3),
+        featuredImage: {
+          imageURL: faker.image.business(1366, 768),
+          imageDescription: faker.lorem.sentence(4),
+        },
+        slug: faker.lorem.slug(),
+        uuid: faker.datatype.uuid(),
+      };
+
+      blogPostTempArray.push(blogPostTempInner);
+    }
+
+    return blogPostTempArray;
+  } else {
+    let blogPostTemp: BlogPostType = {
+      blogActive: true,
+      blogDescription: faker.lorem.paragraph(),
+      blogPost: faker.lorem.paragraphs(10),
+      blogTitle: faker.lorem.sentence(3),
+      featuredImage: {
+        imageURL: faker.image.business(1366, 768),
+        imageDescription: faker.lorem.sentence(4),
+      },
+      slug: faker.lorem.slug(),
+      uuid: faker.datatype.uuid(),
+    };
+
+    return blogPostTemp;
+  }
 };
 
 export default function Home() {
@@ -22,6 +65,16 @@ export default function Home() {
   const toggleLoading = (loading: boolean) => {
     setIsLoading(loading);
   };
+
+  const [fakePosts, setFakePosts] = React.useState<BlogPostType[]>([]);
+
+  React.useEffect(() => {
+    let fakePosts = fakeBlogPost(10) as BlogPostType[];
+
+    console.log(fakePosts)
+
+    setFakePosts(fakePosts);
+  }, []);
 
   const { menuList, navigableList } = useLandingPage([
     {
@@ -41,6 +94,13 @@ export default function Home() {
     {
       label: "Depoimentos",
       component: <Testimonials />,
+      ref: null,
+      hidden: true,
+    },
+
+    {
+      label: "Blog",
+      component: <Posts blogPosts={fakePosts} />,
       ref: null,
       hidden: true,
     },

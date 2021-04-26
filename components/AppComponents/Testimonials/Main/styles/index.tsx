@@ -205,7 +205,7 @@ const TestimonialsLayout: React.FC<TestimonialsLayoutProps> = ({
   return (
     <Root>
       <Container>
-        <Title>Depoimentos de quem investe.</Title>
+        <Title>Depoimentos.</Title>
         <SliderContainer>
           {children}
 
