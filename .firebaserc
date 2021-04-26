@@ -3,15 +3,9 @@
     "especializa-next-hefesto": {
       "hosting": {
         "app": [
-          "especialize-next-hefesto"
-        ],
-        "admin": [
-          "especializa-admin-app"
+          "especializa-next-hefesto"
         ]
       }
     }
-  },
-  "projects": {
-    "default": "especializa-next-hefesto"
   }
 }
