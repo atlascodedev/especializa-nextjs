@@ -7,6 +7,7 @@ import Hero from "../components/AppComponents/Hero/Main";
 import DefenseSection from "../components/AppComponents/DefenseSection";
 import Testimonials from "../components/AppComponents/Testimonials/Main";
 import Contact from "../components/AppComponents/Contact/Main";
+import Partners from "../components/AppComponents/Partners/Main";
 
 export type MenuItem = {
   menuName: string;
@@ -48,6 +49,12 @@ export default function Home() {
       label: "Contato",
       component: <Contact loadingFn={() => console.log("not now")} />,
       ref: contactSectionRef,
+      hidden: false,
+    },
+    {
+      label: "Parceiros",
+      component: <Partners />,
+      ref: null,
       hidden: false,
     },
   ]);

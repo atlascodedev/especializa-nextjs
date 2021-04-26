@@ -25,20 +25,17 @@ function ScrollTop(props) {
   });
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    // const anchor = (
-    //   (event.target as HTMLDivElement).ownerDocument || document
-    // ).querySelector("#back-to-top-anchor");
-
-    // if (anchor) {
-    //   anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-    // }
-
     scrollIntoView("top", null);
   };
 
   return (
     <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes.root}>
+      <div
+        style={{ zIndex: 9999 }}
+        onClick={handleClick}
+        role="presentation"
+        className={classes.root}
+      >
         <Fab color="primary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>

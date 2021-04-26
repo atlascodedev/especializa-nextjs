@@ -45,3 +45,15 @@ a {
   padding-top: 10vh;
   padding-bottom: 10vh;
 }
+
+#swiper-partner .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#swiper-partner.swiper-container {
+  height: auto;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
