@@ -5,6 +5,7 @@ import AppLayout from "../layout/AppLayout";
 import useLandingPage from "../hooks/useLandingPage/useLandingPage";
 import Hero from "../components/AppComponents/Hero/Main";
 import DefenseSection from "../components/AppComponents/DefenseSection";
+import Testimonials from "../components/AppComponents/Testimonials/Main";
 
 export type MenuItem = {
   menuName: string;
@@ -30,7 +31,14 @@ export default function Home() {
       label: "Defense section",
       component: <DefenseSection />,
       ref: null,
-      hidden: true
+      hidden: true,
+    },
+
+    {
+      label: "Depoimentos",
+      component: <Testimonials />,
+      ref: null,
+      hidden: true,
     },
   ]);
 
@@ -45,7 +53,7 @@ export default function Home() {
         isGlobalLoading={isLoading}
         scrollTopButton
         hideOnScroll
-        items={[]}
+        items={menuList}
       >
         {navigableList.map((navigable, index: number) => {
           return <div key={index}>{navigable}</div>;

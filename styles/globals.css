@@ -33,3 +33,15 @@ a {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #4c58a4;
 }
+
+#swiper-testimonials .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#swiper-testimonials.swiper-container {
+  height: auto;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
