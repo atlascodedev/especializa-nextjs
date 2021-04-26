@@ -1,8 +1,8 @@
-import { Box, Button } from "@material-ui/core"
-import { Link } from "gatsby"
-import React from "react"
-import styled from "styled-components"
-import { Url } from "url"
+import { Box, Button } from "@material-ui/core";
+import React from "react";
+import styled from "styled-components";
+import { Url } from "url";
+import Link from "next/link";
 
 const ServiceCardBase = styled("div")`
   display: flex;
@@ -10,16 +10,16 @@ const ServiceCardBase = styled("div")`
   align-items: center;
   justify-content: center;
   position: relative;
-`
+`;
 
 type ServiceCardImageProps = {
-  img: string
-}
+  img: string;
+};
 
 const ServiceCardImage = styled("div")<ServiceCardImageProps>`
   width: 310px;
   height: 190px;
-  background-image: ${props => `url(${props.img})`};
+  background-image: ${(props) => `url(${props.img})`};
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,7 +29,7 @@ const ServiceCardImage = styled("div")<ServiceCardImageProps>`
     width: 385px;
     height: 265px;
   }
-`
+`;
 
 const ServiceCardBody = styled("div")`
   width: 310px;
@@ -56,7 +56,7 @@ const ServiceCardBody = styled("div")`
     min-height: 227.32px;
     height: auto;
   }
-`
+`;
 
 const ServiceCardTitle = styled("div")`
   text-align: center;
@@ -66,18 +66,18 @@ const ServiceCardTitle = styled("div")`
   margin-bottom: 15px;
   margin-top: 15px;
   padding-top: 35px;
-`
+`;
 
 const ServiceCardText = styled("div")`
   font-size: 10px;
   padding: 20px;
-`
+`;
 
 interface Props {
-  serviceCardImg?: string
-  serviceCardTitle?: string
-  serviceCardText?: string
-  serviceCardURL?: string
+  serviceCardImg?: string;
+  serviceCardTitle?: string;
+  serviceCardText?: string;
+  serviceCardURL?: string;
 }
 
 const ServiceCard = ({
@@ -93,15 +93,17 @@ const ServiceCard = ({
         <ServiceCardBody>
           <ServiceCardTitle>{serviceCardTitle}</ServiceCardTitle>
           <ServiceCardText>{serviceCardText}</ServiceCardText>
-          <Link to={serviceCardURL}>
-            <Button variant="contained" color="primary">
-              Conheça o serviço
-            </Button>
+          <Link href={serviceCardURL}>
+            <a>
+              <Button variant="contained" color="primary">
+                Conheça o serviço
+              </Button>
+            </a>
           </Link>
         </ServiceCardBody>
       </ServiceCardBase>
     </Box>
-  )
-}
+  );
+};
 
-export default ServiceCard
+export default ServiceCard;

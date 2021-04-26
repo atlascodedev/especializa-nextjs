@@ -1,6 +1,6 @@
-import React from "react"
-import DefenseCard from "../DefenseCard"
-import styled from "styled-components"
+import React from "react";
+import DefenseCard from "../DefenseCard";
+import styled from "styled-components";
 import {
   AccountBalance,
   Assessment,
@@ -8,9 +8,8 @@ import {
   CreditCard,
   EmojiObjects,
   Facebook,
-} from "@material-ui/icons"
-import { Fade, Slide, useMediaQuery } from "@material-ui/core"
-import { Waypoint } from "react-waypoint"
+} from "@material-ui/icons";
+import { Fade, Slide, useMediaQuery } from "@material-ui/core";
 
 const DefenseSectionRoot = styled("div")`
   display: flex;
@@ -20,7 +19,7 @@ const DefenseSectionRoot = styled("div")`
   height: 100%;
   text-align: center;
   overflow: hidden;
-`
+`;
 
 const DefenseSectionTitle = styled("h2")`
   font-family: "Suez One";
@@ -28,7 +27,7 @@ const DefenseSectionTitle = styled("h2")`
   color: #333;
   text-rendering: optimizeLegibility;
   font-size: 30px;
-`
+`;
 
 const DefenseSectionContainer = styled("div")`
   margin-top: 5vh;
@@ -43,22 +42,20 @@ const DefenseSectionContainer = styled("div")`
     grid-template-rows: none;
     grid-template-columns: 1fr 1fr 1fr;
   }
-`
+`;
 
 interface Props {}
 
 const DefenseSection = (props: Props) => {
-  const [defenseAnimation, setDefenseAnimation] = React.useState<boolean>(false)
-  const isBigDevice = useMediaQuery("(min-width: 1024px)")
+  const [defenseAnimation, setDefenseAnimation] = React.useState<boolean>(
+    false
+  );
+  const isBigDevice = useMediaQuery("(min-width: 1024px)");
 
-  const deviceSize = isBigDevice ? 400 : 400
+  const deviceSize = isBigDevice ? 400 : 400;
 
   return (
     <div>
-      <Waypoint
-        bottomOffset={deviceSize}
-        onEnter={() => setDefenseAnimation(true)}
-      />
       <DefenseSectionRoot>
         <DefenseSectionTitle>
           Por que escolher a <span>Consultoria Especializa</span>?
@@ -112,7 +109,7 @@ const DefenseSection = (props: Props) => {
         </DefenseSectionContainer>
       </DefenseSectionRoot>
     </div>
-  )
-}
+  );
+};
 
-export default DefenseSection
+export default DefenseSection;

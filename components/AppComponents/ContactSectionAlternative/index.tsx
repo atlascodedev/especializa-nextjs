@@ -1,49 +1,47 @@
-import React from "react"
-import styled from "styled-components"
-import ContactFormMain from "../ContactForm"
-import contactBg from "../../../images/contact-bg.png"
-import pattern from "../../../images/pattern-behind.svg"
-import { useMediaQuery } from "@material-ui/core"
+import React from "react";
+import styled from "styled-components";
+import ContactFormMain from "../ContactForm";
+import { useMediaQuery } from "@material-ui/core";
 
 type ContactSectionBaseProps = {
-  color: string
-}
+  color: string;
+};
 
 const ContactSectionBase = styled.div<ContactSectionBaseProps>`
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   overflow: hidden;
   padding-top: 5vh;
-`
+`;
 
 const ContactSectionBaseInner = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-`
+`;
 
 type ContactSectionPictureContainerProps = {
-  height: string | number
-  imagePosY: string
-  imagePosX: string
-}
+  height: string | number;
+  imagePosY: string;
+  imagePosX: string;
+};
 
 const ContactSectionPictureContainer = styled.div<ContactSectionPictureContainerProps>`
-  height: ${props =>
+  height: ${(props) =>
     typeof props.height == "number" ? props.height + "px" : props.height};
   width: fit-content;
   transform: rotateY(180deg);
   position: absolute;
-  bottom: ${props => props.imagePosY};
-  left: ${props => props.imagePosX};
+  bottom: ${(props) => props.imagePosY};
+  left: ${(props) => props.imagePosX};
 
   @media (min-width: 1024px) {
   }
-`
+`;
 
 const ContactSectionPicture = styled.img`
   height: 100%;
   width: 100%;
-`
+`;
 
 const ContactSectionPictureBehind = styled.img`
   opacity: 0.9;
@@ -51,7 +49,7 @@ const ContactSectionPictureBehind = styled.img`
   position: absolute;
   bottom: 0;
   left: 7%;
-`
+`;
 
 const ContactSectionTextContainer = styled.div`
   color: #fff;
@@ -70,26 +68,26 @@ const ContactSectionTextContainer = styled.div`
     font-size: 30px;
     padding-bottom: 10vh;
   }
-`
+`;
 
 interface Props {
-  sectionText: string
-  image?: string
-  backgroundColor?: string
-  imageHeight?: string | number
-  imagePosX?: string
-  imagePosY?: string
+  sectionText: string;
+  image?: string;
+  backgroundColor?: string;
+  imageHeight?: string | number;
+  imagePosX?: string;
+  imagePosY?: string;
 }
 
 const ContactSectionAlterative: React.FC<Props> = ({
   sectionText = "Contate-nos, ficaremos felizes em atendê-lo(a).  Nossa consulta é gratuita.",
-  image = `${contactBg}`,
+  image = `${"/images/contact-bg.png"}`,
   backgroundColor = "#4C58A4",
   imageHeight = 600,
   imagePosX = "10%",
   imagePosY = "0",
 }) => {
-  const bigDevice = useMediaQuery("@media(min-width: 1024px)")
+  const bigDevice = useMediaQuery("@media(min-width: 1024px)");
 
   return (
     <React.Fragment>
@@ -100,7 +98,7 @@ const ContactSectionAlterative: React.FC<Props> = ({
           </ContactSectionTextContainer>
 
           <ContactSectionBaseInner>
-            <ContactSectionPictureBehind src={pattern} />
+            <ContactSectionPictureBehind src={"/images/pattern-behind.svg"} />
 
             <ContactSectionPictureContainer
               imagePosX={imagePosX}
@@ -124,7 +122,7 @@ const ContactSectionAlterative: React.FC<Props> = ({
         </ContactSectionBase>
       )}
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default ContactSectionAlterative
+export default ContactSectionAlterative;

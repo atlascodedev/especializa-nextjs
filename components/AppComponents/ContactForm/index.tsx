@@ -4,9 +4,9 @@ import * as Yup from "yup"
 import styled from "styled-components"
 import { Box, Button, SvgIcon } from "@material-ui/core"
 import { AccountCircle } from "@material-ui/icons"
-import FormikField from "../../UtilityComponents/FormikField"
-import MaskInput from "../../UtilityComponents/MaskInput"
-import ConfirmationDialog from "../../UtilityComponents/ConfirmationDialog"
+import FormikField from "../../Util/FormikField"
+import MaskInput from "../../Util/MaskInput"
+import ConfirmationDialog from "../../Util/ConfirmationDialog"
 
 const validationSchema = Yup.object({
   name: Yup.string()

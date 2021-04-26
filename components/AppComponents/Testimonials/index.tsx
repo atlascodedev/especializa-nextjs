@@ -1,7 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import styled from "styled-components"
-import TestimonialSlider from "./TestimonialSlider"
+import React from "react";
+import styled from "styled-components";
+import TestimonialSlider from "./TestimonialSlider";
 
 const TestimonialsRoot = styled("div")`
   background-color: #fbfbfb;
@@ -12,7 +11,7 @@ const TestimonialsRoot = styled("div")`
     padding-top: 10vh;
     padding-bottom: 10vh;
   }
-`
+`;
 
 const TestimonialsTitle = styled("div")`
   text-align: center;
@@ -20,52 +19,24 @@ const TestimonialsTitle = styled("div")`
   font-family: "Suez One";
   font-weight: 600;
   /* margin-bottom: 100px; */
-`
+`;
 
-type Props = {}
+type Props = {};
 
 export type Testimonial = {
-  testimonialPicture: string
-  testimonialText: string
-  testimonialName: string
-}
+  testimonialPicture: string;
+  testimonialText: string;
+  testimonialName: string;
+};
 
 const TestimonialsSection: React.FC<Props> = () => {
-  const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
-
-  const data = useStaticQuery(graphql`
-    {
-      allMarkdownRemark(
-        filter: { frontmatter: { contentType: { eq: "testimonials" } } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              testimonialPicture
-              testimonialText
-              testimonialName
-            }
-          }
-        }
-      }
-    }
-  `)
+  const [testimonials, setTestimonials] = React.useState<Testimonial[]>([]);
 
   React.useEffect(() => {
-    let testimonialsArrayLocal: Array<Testimonial> = []
+    let testimonialsArrayLocal: Array<Testimonial> = [];
 
-    data.allMarkdownRemark.edges.forEach((testimonialNode: any) => {
-      let testimonialLocal: Testimonial = {
-        testimonialPicture: testimonialNode.node.frontmatter.testimonialPicture,
-        testimonialText: testimonialNode.node.frontmatter.testimonialText,
-        testimonialName: testimonialNode.node.frontmatter.testimonialName,
-      }
-
-      testimonialsArrayLocal.push(testimonialLocal)
-    })
-
-    setTestimonials(testimonialsArrayLocal)
-  }, [])
+    setTestimonials(testimonialsArrayLocal);
+  }, []);
 
   return (
     <div>
@@ -77,7 +48,7 @@ const TestimonialsSection: React.FC<Props> = () => {
         </TestimonialsRoot>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default TestimonialsSection
+export default TestimonialsSection;

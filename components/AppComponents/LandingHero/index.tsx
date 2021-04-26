@@ -1,15 +1,11 @@
-import React from "react"
-import styled from "styled-components"
-import scrollHelper from "../../../helper/scrollIntoViewType"
-import background from "../../../images/main-bg.svg"
-import waves from "../../../images/waves.svg"
-import heroImage from "../../../images/cropped-img.png"
-import { Box, Button, Slide, useMediaQuery } from "@material-ui/core"
+import React from "react";
+import styled from "styled-components";
+import { Box, Button, Slide, useMediaQuery } from "@material-ui/core";
 
 const HeroBackGroundDesktop = styled("div")`
   height: 100vh;
   width: 100%;
-  background-image: url(${background});
+  background-image: url(${"/images/cropped-img.png"});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -20,12 +16,12 @@ const HeroBackGroundDesktop = styled("div")`
   @media (min-width: 1024px) {
     display: block;
   }
-`
+`;
 
 const HeroBackGroundMobile = styled.div`
   height: 65vh;
   width: 100%;
-  background-image: url(${background});
+  background-image: url(${"images/main-bg.svg"});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -35,14 +31,14 @@ const HeroBackGroundMobile = styled.div`
   @media (min-width: 1024px) {
     display: none;
   }
-`
+`;
 
 const HeroBackgroundWaves = styled.img`
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: 5;
-`
+`;
 
 const HeroBackgroundImageContainer = styled.div`
   height: 900px;
@@ -63,12 +59,12 @@ const HeroBackgroundImageContainer = styled.div`
   @media (min-width: 1600px) {
     height: 750px;
   }
-`
+`;
 
 const HeroBackgroundImage = styled.img`
   height: 100%;
   width: 100%;
-`
+`;
 
 const HeroTextContainer = styled.div`
   display: flex;
@@ -82,7 +78,7 @@ const HeroTextContainer = styled.div`
   @media (min-width: 1024px) {
     padding-left: 24px;
   }
-`
+`;
 
 const HeroHeader = styled.div`
   color: #3b4043;
@@ -93,7 +89,7 @@ const HeroHeader = styled.div`
   @media (min-width: 1600px) {
     font-size: 50px;
   }
-`
+`;
 
 const HeroText = styled.div`
   color: #fff;
@@ -109,7 +105,7 @@ const HeroText = styled.div`
   @media (min-width: 1600px) {
     font-size: 34px;
   }
-`
+`;
 
 const HeroMobileInnerContainer = styled.div`
   height: 100%;
@@ -117,12 +113,12 @@ const HeroMobileInnerContainer = styled.div`
   grid-template-rows: 20% 40% 40%;
   font-family: "Suez One";
   place-items: center;
-`
+`;
 
 const HeroMobileHeaderText = styled.div`
   color: #3b4043;
   font-size: 26px;
-`
+`;
 
 const HeroMobileText = styled.div`
   color: #fff;
@@ -131,21 +127,21 @@ const HeroMobileText = styled.div`
   & > span {
     color: #29378e;
   }
-`
+`;
 
 const HeroMobileButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 type Props = {
-  ctaRef: React.RefObject<HTMLElement> | null
-  ctaRefSecond: React.RefObject<HTMLElement> | null
-}
+  ctaRef: React.RefObject<HTMLElement> | null;
+  ctaRefSecond: React.RefObject<HTMLElement> | null;
+};
 
 const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
-  const bigDevice = useMediaQuery("@media(min-width: 1024px)")
+  const bigDevice = useMediaQuery("@media(min-width: 1024px)");
 
   return (
     <React.Fragment>
@@ -167,7 +163,6 @@ const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
             >
               <Box color="#fff">
                 <Button
-                  onClick={() => scrollHelper(ctaRef, "contato")}
                   variant="contained"
                   color="inherit"
                   style={{ backgroundColor: "#29378E" }}
@@ -177,20 +172,16 @@ const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
               </Box>
 
               <Box color="#fff">
-                <Button
-                  onClick={() => scrollHelper(ctaRefSecond, "servicos")}
-                  variant="outlined"
-                  color="inherit"
-                >
+                <Button variant="outlined" color="inherit">
                   Conheça nossas soluções
                 </Button>
               </Box>
             </Box>
           </HeroTextContainer>
 
-          <HeroBackgroundWaves src={waves} />
+          <HeroBackgroundWaves src={"/images/waves.svg"} />
           <HeroBackgroundImageContainer>
-            <HeroBackgroundImage src={heroImage} />
+            <HeroBackgroundImage />
           </HeroBackgroundImageContainer>
         </HeroBackGroundDesktop>
       ) : (
@@ -206,7 +197,6 @@ const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
             <HeroMobileButtonsContainer>
               <Box color="#fff">
                 <Button
-                  onClick={() => scrollHelper(ctaRef, "contato")}
                   variant="contained"
                   color="inherit"
                   style={{ backgroundColor: "#29378E" }}
@@ -217,7 +207,6 @@ const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
 
               <Box pt={3} color="#fff">
                 <Button
-                  onClick={() => scrollHelper(ctaRefSecond, "servicos")}
                   variant="contained"
                   color="inherit"
                   style={{ backgroundColor: "#6c79c7" }}
@@ -230,7 +219,7 @@ const LandingHero = ({ ctaRef = null, ctaRefSecond = null }: Props) => {
         </HeroBackGroundMobile>
       )}
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default LandingHero
+export default LandingHero;

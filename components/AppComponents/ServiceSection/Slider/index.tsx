@@ -1,45 +1,43 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 import SwiperCore, {
   Navigation,
   Pagination,
   Scrollbar,
   A11y,
   Autoplay,
-} from "swiper"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "./slider.css"
-import ServiceCard from "../ServiceCard"
-import { graphql, useStaticQuery } from "gatsby"
-import { ServiceBenefit } from "../../../../templates/Post"
+} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./slider.css";
+import ServiceCard from "../ServiceCard";
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 interface CardActiveProps {
-  active: boolean
+  active: boolean;
 }
 
 const CardActiveContainer = styled("div")<CardActiveProps>`
-  opacity: ${props => (props.active ? "1" : "0.6")};
-  scale: ${props => (props.active ? "1" : "0.75")};
+  opacity: ${(props) => (props.active ? "1" : "0.6")};
+  scale: ${(props) => (props.active ? "1" : "0.75")};
   transition: all 0.8s ease;
   will-change: scale;
-`
+`;
 
 type Props = {
-  services: Array<ConsultingService>
-}
+  services: Array<ConsultingService>;
+};
 
 export type ConsultingService = {
-  benefits: Array<ServiceBenefit>
-  featuredImage: string
-  summary: string
-  title: string
-  slug: string
-}
+  benefits: Array<any>;
+  featuredImage: string;
+  summary: string;
+  title: string;
+  slug: string;
+};
 
 const ServiceSlider = ({ services = [] }: Props) => {
-  const [serviceData, setServiceData] = React.useState([])
+  const [serviceData, setServiceData] = React.useState([]);
 
   return (
     <div>
@@ -75,7 +73,7 @@ const ServiceSlider = ({ services = [] }: Props) => {
         ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default ServiceSlider
+export default ServiceSlider;

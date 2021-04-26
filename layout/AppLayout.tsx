@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../components/AppComponents/Footer";
-import Navbar from "../components/AppComponents/Navbar";
 import { MenuItem } from "../pages";
 import InfoSection from "../components/AppComponents/InfoSection";
 import { Address } from "cluster";
+import Navbar from "../components/AppComponents/Navbar/Main";
 
 type AppLayoutProps = {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ type AppLayoutProps = {
 const AppLayout: React.FC<AppLayoutProps> = ({ children, menu }) => {
   return (
     <React.Fragment>
-      <Navbar menu={menu} logo={"/images/logo.svg"} />
+      <Navbar />
       <main>{children}</main>
 
       <div>
