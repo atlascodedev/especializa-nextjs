@@ -22,6 +22,7 @@ declare module "styled-components" {
         main: string;
         light: string;
         secondary: string;
+        white: string;
       };
     };
 

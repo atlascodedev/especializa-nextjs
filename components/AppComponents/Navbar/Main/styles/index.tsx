@@ -54,10 +54,18 @@ const LogoContainer = styled.div`
   order: 0;
   margin-left: 15px;
   cursor: pointer;
+  height: 60px;
+
+  img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
 
   @media (min-width: 1024px) {
     flex-grow: 0.5;
     margin-left: 50px;
+    height: 90px;
     justify-content: flex-end;
   }
 `;
@@ -101,10 +109,7 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({
                 <SvgIcon onClick={() => toggleDrawer(true)} component={Menu} />
               </BurguerMenuContainer>
               <LogoContainer onClick={returnHome}>
-                <img
-                  src="/logo.svg"
-                  alt="Logotipo - Munay Cartas Contempladas"
-                />
+                <img src="/images/logo.svg" alt="Logotipo - Especializa" />
               </LogoContainer>
             </ContainerMain>
           </Root>
