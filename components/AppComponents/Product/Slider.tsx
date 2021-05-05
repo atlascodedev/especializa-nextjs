@@ -30,9 +30,10 @@ const Root = styled.div`
   }
 
   .swiper-slide {
-    width: auto !important;
+    /* width: 100% !important; */
     flex-shrink: 0 !important;
-    display: block !important;
+    display: flex !important;
+    justify-content: center;
     height: 100% !important;
     max-height: 100% !important;
   }
@@ -57,13 +58,17 @@ const Slider: React.FC<Props> = ({ children, slidersItems }) => {
         id="swiper-services"
         breakpoints={{
           1024: {
-            slidesPerView: 1.2,
+            spaceBetween: 0,
+            slidesPerView: 1.4,
+          },
+          1600: {
+            slidesPerView: 1.4,
           },
         }}
       >
         {slidersItems.map((value: any, index: number) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <SliderCard />
             </SwiperSlide>
           );

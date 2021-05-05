@@ -7,6 +7,10 @@ const Container = styled(motion.div)`
   height: 50vw;
   z-index: 100;
   position: relative;
+
+  @media (min-width: 1600px) {
+    height: 40vw;
+  }
 `;
 
 const Image = styled.img`

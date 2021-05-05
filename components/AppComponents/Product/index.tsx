@@ -4,33 +4,48 @@ import styled from "styled-components";
 import Background from "./Background";
 import BusinessManImage from "./BusinessManImage";
 import Circle from "./Circle";
+import NavigationButton from "./NavigationButton";
 import Slider from "./Slider";
+import SliderControls from "./SliderControls";
 import Text from "./Text";
 
 const Root = styled.div`
   width: 100%;
   height: auto;
+  overflow: hidden;
 `;
 
 const ContentContainer = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
   height: 100%;
+  grid-template-columns: 100%;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 50% 50%;
+  }
 `;
 
 const ContentImageContainer = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
 
 const ContentSliderOuterContainer = styled.div`
   display: grid;
-  grid-template-rows: 25% 75%;
+  grid-template-rows: auto;
   justify-items: center;
-  row-gap: 20px;
-  overflow: hidden;
+  row-gap: 75px;
   z-index: 200;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    row-gap: 20px;
+  }
 `;
 
 interface Props {}
@@ -51,6 +66,8 @@ const Product = (props: Props) => {
                 <ContentSliderOuterContainer>
                   <Text />
                   <Slider slidersItems={[1, 1, 1, 1, 1, 1, 1]} />
+
+                  <SliderControls />
                 </ContentSliderOuterContainer>
               </ContentContainer>
             </Background>

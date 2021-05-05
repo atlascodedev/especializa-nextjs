@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const Container = styled(motion.div)`
   position: absolute;
@@ -25,7 +25,10 @@ const Circle: React.FC<Props> = ({ children, visible }) => {
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
       variants={{
-        visible: { scale: 1 },
+        visible: {
+          scale: [1, 1.2, 1],
+          transition: { repeat: Infinity, duration: 2, repeatDelay: 5 },
+        },
         hidden: { scale: 0 },
       }}
       transition={{
