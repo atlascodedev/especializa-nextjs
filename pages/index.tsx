@@ -11,6 +11,7 @@ import Partners from "../components/AppComponents/Partners/Main";
 import Posts from "../components/AppComponents/BlogList/Main";
 import { BlogPostType } from "../@types";
 import * as faker from "faker";
+import Product from "../components/AppComponents/Product";
 
 export type MenuItem = {
   menuName: string;
@@ -71,7 +72,7 @@ export default function Home() {
   React.useEffect(() => {
     let fakePosts = fakeBlogPost(10) as BlogPostType[];
 
-    console.log(fakePosts)
+    console.log(fakePosts);
 
     setFakePosts(fakePosts);
   }, []);
@@ -89,6 +90,13 @@ export default function Home() {
       component: <DefenseSection />,
       ref: null,
       hidden: true,
+    },
+
+    {
+      label: "Serviços",
+      component: <Product />,
+      ref: null,
+      hidden: false,
     },
 
     {

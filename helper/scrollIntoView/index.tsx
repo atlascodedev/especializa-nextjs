@@ -16,7 +16,7 @@ const scrollIntoView = (
     "scrollBehavior" in global.window.document.documentElement.style;
 
   if (global.window.location.pathname === "/") {
-    if (isChrome || !smoothScrollSupport) {
+    if (isChrome || !smoothScrollSupport || !ref) {
       scrollPolyfill(`#${converToSlug(menuName).toLowerCase()}`);
     } else {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
