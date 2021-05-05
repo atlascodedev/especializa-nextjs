@@ -12,7 +12,6 @@ import Text from "./Text";
 const Root = styled.div`
   width: 100%;
   height: auto;
-  overflow: hidden;
 `;
 
 const ContentContainer = styled.div`
@@ -39,9 +38,10 @@ const ContentSliderOuterContainer = styled.div`
   display: grid;
   grid-template-rows: auto;
   justify-items: center;
-  row-gap: 75px;
+  row-gap: 20px;
   z-index: 200;
   position: relative;
+  overflow: hidden;
 
   @media (min-width: 1024px) {
     row-gap: 20px;

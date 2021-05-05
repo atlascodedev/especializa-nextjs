@@ -29,7 +29,9 @@ const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
         blogPost: faker.lorem.paragraphs(10),
         blogTitle: faker.lorem.sentence(3),
         featuredImage: {
-          imageURL: faker.image.business(1366, 768),
+          imageURL: `${faker.image.business(1366, 768)}?random=${Math.round(
+            Math.random() * 1000
+          )}`,
           imageDescription: faker.lorem.sentence(4),
         },
         slug: faker.lorem.slug(),
@@ -63,20 +65,6 @@ export default function Home() {
 
   const contactSectionRef = React.useRef<HTMLDivElement>(null);
 
-  const toggleLoading = (loading: boolean) => {
-    setIsLoading(loading);
-  };
-
-  const [fakePosts, setFakePosts] = React.useState<BlogPostType[]>([]);
-
-  React.useEffect(() => {
-    let fakePosts = fakeBlogPost(10) as BlogPostType[];
-
-    console.log(fakePosts);
-
-    setFakePosts(fakePosts);
-  }, []);
-
   const { menuList, navigableList } = useLandingPage([
     {
       label: "Hero",
@@ -108,9 +96,9 @@ export default function Home() {
 
     {
       label: "Blog",
-      component: <Posts blogPosts={fakePosts} />,
+      component: <Posts blogPosts={fakeBlogPost(10) as BlogPostType[]} />,
       ref: null,
-      hidden: true,
+      hidden: false,
     },
 
     {
