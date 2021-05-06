@@ -5,12 +5,17 @@ import * as faker from "faker";
 import { motion } from "framer-motion";
 import { CourseCard } from "../../../@types";
 
-const Root = styled(motion.div)`
+const Root = styled(motion.div)<{ active: boolean }>`
   height: 425px;
   width: 95%;
   background-color: #fff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
+
+  transform: ${(props) => (props.active ? `scale(1)` : "scale(0.75)")};
+  filter: ${(props) => (props.active ? "grayscale(0)" : "grayscale(1)")};
+  opacity: ${(props) => (props.active ? "1" : "0.5")};
+  transition: all 0.5s ease;
 
   @media (min-width: 1024px) {
     height: 500px;
@@ -58,15 +63,7 @@ interface Props extends CourseCard {
 
 const SliderCard = ({ active, imageURL, subTitle, title }: Props) => {
   return (
-    <Root
-      initial="inactive"
-      animate={active ? "active" : "inactive"}
-      variants={{
-        active: { scale: 1, filter: "grayscale(0)", opacity: 1 },
-        inactive: { scale: 0.75, filter: "grayscale(1)", opacity: 0.5 },
-      }}
-      transition={{ ease: "anticipate", duration: 0.6 }}
-    >
+    <Root active={active}>
       <Container>
         <Image src={imageURL} />
         <InfoContainer>
