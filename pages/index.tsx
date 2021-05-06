@@ -9,13 +9,46 @@ import Testimonials from "../components/AppComponents/Testimonials/Main";
 import Contact from "../components/AppComponents/Contact/Main";
 import Partners from "../components/AppComponents/Partners/Main";
 import Posts from "../components/AppComponents/BlogList/Main";
-import { BlogPostType } from "../@types";
+import { BlogPostType, CourseCard } from "../@types";
 import * as faker from "faker";
 import Product from "../components/AppComponents/Product";
+import Courses from "../components/AppComponents/Courses";
 
 export type MenuItem = {
   menuName: string;
   reference: React.RefObject<HTMLElement> | null;
+};
+
+const fakeCourseCard = (amount?: number): CourseCard | CourseCard[] => {
+  if (amount && amount > 0) {
+    let courseCardTempArray: CourseCard[] = [];
+
+    for (let i = 0; i < amount; i++) {
+      let courseCardTempInner: CourseCard = {
+        imageURL:
+          faker.image.business(1366, 768) +
+          `?random=${Math.round(Math.random() * 1000)}`,
+        subTitle: faker.lorem.word(10),
+        title: faker.lorem.word(12),
+        to: "#",
+      };
+
+      courseCardTempArray.push(courseCardTempInner);
+    }
+
+    return courseCardTempArray;
+  } else {
+    let courseCardTempInner: CourseCard = {
+      imageURL:
+        faker.image.business(1366, 768) +
+        `?random=${Math.round(Math.random() * 1000)}`,
+      subTitle: faker.lorem.word(10),
+      title: faker.lorem.word(12),
+      to: "#",
+    };
+
+    return courseCardTempInner;
+  }
 };
 
 const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
@@ -83,6 +116,13 @@ export default function Home() {
     {
       label: "Serviços",
       component: <Product />,
+      ref: null,
+      hidden: false,
+    },
+
+    {
+      label: "Cursos",
+      component: <Courses slidersItems={fakeCourseCard(10) as CourseCard[]} />,
       ref: null,
       hidden: false,
     },

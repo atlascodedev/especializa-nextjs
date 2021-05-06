@@ -4,6 +4,13 @@ export interface MenuItem {
   hidden?: boolean;
 }
 
+export interface CourseCard {
+  title: string;
+  imageURL: string;
+  subTitle: string;
+  to: string;
+}
+
 export interface NavigableComponent {
   navigableComponent: JSX.Element | null;
 }
