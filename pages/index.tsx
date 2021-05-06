@@ -25,9 +25,13 @@ const fakeCourseCard = (amount?: number): CourseCard | CourseCard[] => {
 
     for (let i = 0; i < amount; i++) {
       let courseCardTempInner: CourseCard = {
-        imageURL:
-          faker.image.business(1366, 768) +
-          `?random=${Math.round(Math.random() * 1000)}`,
+        imageURL: `${faker.image.imageUrl(
+          1366,
+          768,
+          "business",
+          true,
+          true
+        )}?random=${Math.round(Math.random() * 1000)}`,
         subTitle: faker.lorem.word(10),
         title: faker.lorem.word(12),
         to: "#",
@@ -39,9 +43,13 @@ const fakeCourseCard = (amount?: number): CourseCard | CourseCard[] => {
     return courseCardTempArray;
   } else {
     let courseCardTempInner: CourseCard = {
-      imageURL:
-        faker.image.business(1366, 768) +
-        `?random=${Math.round(Math.random() * 1000)}`,
+      imageURL: `${faker.image.imageUrl(
+        1366,
+        768,
+        "business",
+        true,
+        true
+      )}?random=${Math.round(Math.random() * 1000)}`,
       subTitle: faker.lorem.word(10),
       title: faker.lorem.word(12),
       to: "#",
@@ -62,9 +70,13 @@ const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
         blogPost: faker.lorem.paragraphs(10),
         blogTitle: faker.lorem.sentence(3),
         featuredImage: {
-          imageURL: `${faker.image.business(1366, 768)}?random=${Math.round(
-            Math.random() * 1000
-          )}`,
+          imageURL: `${faker.image.imageUrl(
+            1366,
+            768,
+            "business",
+            true,
+            true
+          )}?random=${Math.round(Math.random() * 1000)}`,
           imageDescription: faker.lorem.sentence(4),
         },
         slug: faker.lorem.slug(),
@@ -82,7 +94,13 @@ const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
       blogPost: faker.lorem.paragraphs(10),
       blogTitle: faker.lorem.sentence(3),
       featuredImage: {
-        imageURL: faker.image.business(1366, 768),
+        imageURL: `${faker.image.imageUrl(
+          1366,
+          768,
+          "business",
+          true,
+          true
+        )}?random=${Math.round(Math.random() * 1000)}`,
         imageDescription: faker.lorem.sentence(4),
       },
       slug: faker.lorem.slug(),
@@ -158,7 +176,11 @@ export default function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Create Next App</title>
+        <title>
+          Consultoria Especializa - Serviços acadêmicos, pedagógicos e de
+          secretaria
+        </title>
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -55,6 +55,8 @@ const Slider: React.FC<Props> = ({ children, slidersItems }) => {
         }}
         slidesPerView={1}
         spaceBetween={20}
+        draggable
+        loop
         id="swiper-services"
         breakpoints={{
           1024: {

@@ -36,6 +36,7 @@ const Slider = ({ slidersItems }: Props) => {
         spaceBetween={20}
         id="swiper-course"
         slidesPerView={1}
+        draggable
         breakpoints={{
           1024: {
             centeredSlides: true,
