@@ -1,10 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { GetStaticPaths, GetStaticPathsResult } from "next";
 import React from "react";
-import * as fs from "fs";
-import * as path from "path";
 import { BlogPostType } from "../../@types";
-import converToSlug from "../../helper/convertToSlug";
 import styled from "styled-components";
 import Head from "next/head";
 import AppLayout from "../../layout/AppLayout";

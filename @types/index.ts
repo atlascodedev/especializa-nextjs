@@ -20,22 +20,6 @@ export interface HefestoImageField {
   imageDescription: string;
 }
 
-export interface TestimonialsType {
-  testimonialPicture: HefestoImageField;
-
-  testimonialText: string;
-  uuid: string;
-  testimonialName: string;
-  testimonialLocation: string;
-}
-
-export interface LandingProps {
-  testimonials: TestimonialsType[];
-  blog: BlogPostType[];
-  partners: PartnerType[];
-  cards: CardProduct[];
-}
-
 export type PartnerType = {
   partnerLogo: HefestoImageField;
   partnerName: string;
@@ -52,22 +36,61 @@ export type BlogPostType = {
   blogDescription: string;
 };
 
-export interface CardInstallment {
-  id: string;
-  installmentValue: number | string;
-  installmentMonths: string | number;
+interface HefestoCollection {
+  uuid: string;
 }
 
-export type ProductType = "Automóvel" | "Imóvel";
+export interface ServiceCollection extends HefestoCollection {
+  serviceName: string;
+  servicePicture: {
+    imageURL: string;
+    imageDescription: string;
+  };
+  serviceContent: string;
+  slug: string;
+}
 
-export interface CardProduct {
-  cardType: ProductType;
-  cardDestaque: boolean;
-  administradora: string;
-  cardEntrada: string | number;
-  cardSituation: boolean;
-  cardValor: number | string;
-  cardExpire: string;
-  cardInstallment: CardInstallment[];
-  uuid: string;
+export interface CourseCollection extends HefestoCollection {
+  slug: string;
+  courseName: string;
+  courseDuration: string;
+  courseLevel: string;
+  courseSyllabus: string[];
+  courseDescription: string;
+  courseArea: string;
+  courseImage: {
+    imageURL: string;
+    imageDescription: string;
+  };
+}
+
+export interface BlogCollection extends HefestoCollection {
+  slug: string;
+  blogTitle: string;
+  blogDescription: string;
+  featuredImage: {
+    imageURL: string;
+    imageDescription: string;
+  };
+  blogActive: boolean;
+  blogPost: boolean;
+}
+
+export interface TestimonialCollection extends HefestoCollection {
+  testimonialName: string;
+  testimonialPicture: {
+    imageURL: string;
+    imageDescription: string;
+  };
+  testimonialText: string;
+  testimonialCompany: string;
+}
+
+export interface PartnerCollection extends HefestoCollection {
+  partnerName: string;
+  partnerLogo: {
+    imageURL: string;
+    imageDescription: string;
+  };
+  partnerWebsite: string;
 }

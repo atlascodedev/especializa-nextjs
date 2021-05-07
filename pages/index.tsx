@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import React from "react";
 import AppLayout from "../layout/AppLayout";
 import useLandingPage from "../hooks/useLandingPage/useLandingPage";
