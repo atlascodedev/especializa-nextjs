@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { SvgIcon } from "@material-ui/core";
 import { ArrowDownward } from "@material-ui/icons";
+import { InView } from "react-intersection-observer";
 
 const Root = styled.div``;
 
@@ -114,7 +115,7 @@ const AboutCourseContainer = styled.div`
   width: 100%;
 `;
 
-const AboutCourseTitle = styled.div`
+const AboutCourseTitle = styled(motion.div)`
   color: ${(props) => props.theme.palette.primary.main};
   font-size: 1.5rem;
   font-weight: 600;
@@ -128,7 +129,7 @@ const AboutCourseTitle = styled.div`
   }
 `;
 
-const AboutCourseText = styled.div`
+const AboutCourseText = styled(motion.div)`
   color: #333;
 `;
 
@@ -187,41 +188,47 @@ const PlacePage = (props: CourseCollection) => {
 
           <AboutCourseRoot>
             <AboutCourseContainer>
-              <AboutCourseTitle>Sobre este curso</AboutCourseTitle>
-              <AboutCourseText>
-                {props.courseDescription} Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Unde, neque expedita praesentium
-                exercitationem veniam dignissimos pariatur autem, aliquid
-                voluptatem cum, numquam sequi. Ipsam dolorem doloribus quaerat
-                dolor, delectus omnis quos consequuntur et. Consequatur adipisci
-                accusamus quasi cumque vitae, itaque non laborum quidem? Nihil
-                excepturi nam minima vitae fugit! Quod asperiores culpa nihil,
-                dolorem itaque at tempora, deserunt accusantium quas, veritatis
-                sequi fugit natus doloremque quia. Doloribus praesentium
-                repudiandae necessitatibus deserunt ratione. Voluptatum ex esse
-                maiores iure distinctio saepe ut reiciendis asperiores est
-                explicabo error alias officiis dolorem tenetur, temporibus
-                pariatur aut eligendi minus, praesentium nam cum eos earum ipsa!
-                Suscipit eius accusamus dolores nobis odio magni eaque
-                reiciendis nesciunt doloremque nisi ducimus inventore itaque
-                veniam tempore, sint voluptatum blanditiis maxime minus
-                reprehenderit quod eos tenetur quidem laboriosam? Accusamus
-                ullam, voluptatibus nobis illo possimus eligendi fugit enim
-                sequi vitae necessitatibus expedita fuga commodi, omnis eius
-                vero saepe et ut ipsa. Provident, quidem! Ipsum impedit iste,
-                autem commodi deleniti voluptas, vitae sapiente esse mollitia
-                dignissimos excepturi numquam modi repudiandae facilis doloribus
-                sed velit, deserunt tenetur molestias aliquam maxime labore
-                placeat? Possimus quaerat, qui minima eveniet explicabo alias
-                ratione ipsum, animi, in quo facere asperiores fuga obcaecati
-                autem cum ea rerum dicta unde? Deleniti pariatur, debitis
-                dolorem, sint rem consequatur dignissimos optio, atque facere
-                tempore sequi voluptatem asperiores quam laborum ullam nulla
-                quos. Ullam quidem aperiam dolorum minima facere officiis
-                aspernatur ut ducimus itaque eos maxime vel quis possimus ea,
-                cum nostrum harum porro quo? Blanditiis libero eligendi harum
-                quidem recusandae! Et, inventore?{" "}
-              </AboutCourseText>
+              <InView triggerOnce={false} threshold={0.4}>
+                {({ entry, inView, ref }) => (
+                  <AboutCourseTitle
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                    variants={{
+                      visible: { opacity: 1, y: 0 },
+                      hidden: { opacity: 0, y: 50 },
+                    }}
+                    transition={{ duration: 0.6, type: "keyframes" }}
+                    ref={ref}
+                  >
+                    Sobre este curso
+                  </AboutCourseTitle>
+                )}
+              </InView>
+              <InView triggerOnce={false} threshold={0.3}>
+                {({ entry, inView, ref }) => {
+                  return (
+                    <AboutCourseText
+                      initial="hidden"
+                      animate={inView ? "visible" : "hidden"}
+                      variants={{
+                        visible: { opacity: 1, y: 0 },
+                        hidden: { opacity: 0, y: 50 },
+                      }}
+                      transition={{ duration: 0.6, type: "keyframes" }}
+                      ref={ref}
+                    >
+                      {props.courseDescription} Lorem ipsum, dolor sit amet
+                      consectetur adipisicing elit. Unde, neque expedita
+                      praesentium exercitationem veniam dignissimos pariatur
+                      autem, aliquid voluptatem cum, numquam sequi. Ipsam
+                      dolorem doloribus quaerat dolor, delectus omnis quos
+                      consequuntur et. Consequatur adipisci accusamus quasi
+                      cumque vitae, itaque non laborum quidem? Nihil excepturi
+                      nam minima vitae fugit! Quod asperiores culpa nihil,
+                    </AboutCourseText>
+                  );
+                }}
+              </InView>
             </AboutCourseContainer>
           </AboutCourseRoot>
         </Root>
