@@ -1,7 +1,5 @@
-import { Form, Formik } from "formik";
 import React from "react";
 import ContactForm from "../Form";
-import ContactFormLayout from "../Form/styles";
 import ContactLayoutContainer from "./styles";
 
 interface Props {

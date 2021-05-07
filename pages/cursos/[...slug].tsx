@@ -1,14 +1,15 @@
-import axios, { AxiosResponse } from "axios";
-import Head from "next/head";
 import React from "react";
+import axios, { AxiosResponse } from "axios";
 import { CourseCollection } from "../../@types";
 import convertToSlug from "../../helper/convertToSlug";
 import AppLayout from "../../layout/AppLayout";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { SvgIcon } from "@material-ui/core";
-import { ArrowDownward } from "@material-ui/icons";
+import { ArrowDownward, PowerOffSharp } from "@material-ui/icons";
 import { InView } from "react-intersection-observer";
+import Head from "next/head";
+import ContactForm from "../../components/AppComponents/Contact/Form";
 
 const Root = styled.div``;
 
@@ -56,11 +57,11 @@ const CourseName = styled.div`
   z-index: 50;
 
   @media (min-width: 1024px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   @media (min-width: 1600px) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 `;
 
@@ -71,11 +72,11 @@ const CourseAreaLevel = styled.div`
   z-index: 50;
 
   @media (min-width: 1024px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   @media (min-width: 1600px) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 `;
 
@@ -93,7 +94,7 @@ const ArrowDownContainer = styled(motion.div)`
     fill: #fff;
     font-size: 3rem;
     @media (min-width: 1024px) {
-      font-size: 4rem;
+      font-size: 3rem;
     }
   }
 `;
@@ -122,10 +123,10 @@ const AboutCourseTitle = styled(motion.div)`
   margin-bottom: 3.5%;
 
   @media (min-width: 1024px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   @media (min-width: 1600px) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 `;
 
@@ -161,10 +162,10 @@ const CourseSyllabusTitle = styled(motion.div)`
   margin-bottom: 3.5%;
 
   @media (min-width: 1024px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   @media (min-width: 1600px) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 `;
 
@@ -191,15 +192,93 @@ const CourseSyllabusItem = styled.div<{ color?: string }>`
   }
 `;
 
-const PlacePage = (props: CourseCollection) => {
+const CourseFormRoot = styled.div`
+  background-color: ${(props) => props.theme.palette.primary.main};
+  width: 100%;
+  height: auto;
+`;
+
+const CourseFormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const CourseFormTitle = styled.div`
+  color: ${(props) => props.theme.palette.primary.contrastText};
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3.5%;
+  margin-top: 3.5%;
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+  @media (min-width: 1600px) {
+    font-size: 3rem;
+  }
+`;
+
+const CourseFormInnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    justify-content: space-around;
+    padding-left: 5%;
+  }
+`;
+
+const CourseFormImageContainer = styled.div`
+  display: none;
+  width: 100%;
+  position: relative;
+  height: 40vw;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`;
+
+const CourseFormImage = styled.img`
+  object-fit: cover;
+  position: absolute;
+  width: auto;
+  height: 100%;
+  right: 15%;
+`;
+
+const CourseFormWaves = styled.img`
+  position: absolute;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  bottom: -2%;
+  right: 0;
+`;
+
+const CourseFormWrapper = styled.img`
+  padding: 5%;
+`;
+
+const CoursePage: React.FC<CourseCollection> = (props) => {
   const arrowControls = useAnimation();
 
   React.useEffect(() => {
     arrowControls.start("cycle");
   }, []);
 
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollToContent = () => {
+    contentRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <React.Fragment>
+    <div>
       <Head>
         <title>
           {props.courseName} - {props.courseArea} - {props.courseLevel} -
@@ -218,7 +297,7 @@ const PlacePage = (props: CourseCollection) => {
           <HeroContainer>
             <ArrowDownContainer
               animate={arrowControls}
-              onClick={() => console.log("nothing for now")}
+              onClick={scrollToContent}
               transition={{
                 duration: 0.75,
                 repeat: Infinity,
@@ -244,7 +323,7 @@ const PlacePage = (props: CourseCollection) => {
             </HeroInnerContainer>
           </HeroContainer>
 
-          <AboutCourseRoot>
+          <AboutCourseRoot ref={contentRef}>
             <AboutCourseContainer>
               <InView triggerOnce={false} threshold={0.4}>
                 {({ entry, inView, ref }) => (
@@ -309,34 +388,7 @@ const PlacePage = (props: CourseCollection) => {
               </InView>
 
               <CourseSyllabusGrid>
-                {[
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                  "item",
-                ].map((syllabusItem, index) => {
+                {props.courseSyllabus.map((syllabusItem, index) => {
                   return (
                     <CourseSyllabusItem
                       color={index % 2 === 0 ? "whitesmoke" : "#fff"}
@@ -348,9 +400,38 @@ const PlacePage = (props: CourseCollection) => {
               </CourseSyllabusGrid>
             </CourseSyllabusContainer>
           </CourseSyllabusRoot>
+          <CourseFormRoot>
+            <CourseFormContainer>
+              <CourseFormTitle>
+                Fale conosco, ficaremos felizes em atendê-lo.
+              </CourseFormTitle>
+
+              <CourseFormInnerContainer>
+                <div
+                  style={{
+                    padding:
+                      global.window && global.window.innerWidth < 1024
+                        ? "8%"
+                        : "0px",
+                  }}
+                >
+                  <ContactForm loadingFn={() => console.log("ok")} />
+                </div>
+
+                <CourseFormImageContainer>
+                  <CourseFormImage
+                    src={
+                      "https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fpost-contact.webp?alt=media"
+                    }
+                  />
+                  <CourseFormWaves src="https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fwaves.webp?alt=media" />
+                </CourseFormImageContainer>
+              </CourseFormInnerContainer>
+            </CourseFormContainer>
+          </CourseFormRoot>
         </Root>
       </AppLayout>
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -383,8 +464,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  // console.log(params);
-
   const courseRequestByID: AxiosResponse<CourseCollection> = await axios.get(
     `https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/coursesNew/${params.slug[3]}`
   );
@@ -394,4 +473,4 @@ export const getStaticProps = async ({ params }) => {
   return { props: courseRequestByIDData };
 };
 
-export default PlacePage;
+export default CoursePage;

@@ -1,7 +1,6 @@
-import { motion, motionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import InView from "react-intersection-observer";
 import styled from "styled-components";
-import AdonisImage from "../../../../Util/AdonisImage";
 
 const ContactRoot = styled.div`
   background-color: ${(props) => props.theme.palette.primary.main};

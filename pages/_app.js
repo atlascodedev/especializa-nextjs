@@ -1,6 +1,5 @@
 import React from "react";
 import App from "next/app";
-import Head from "next/head";
 import { ThemeProvider } from "@material-ui/styles";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,13 +26,6 @@ class MyApp extends App {
 
     return (
       <React.Fragment>
-        <Head>
-          <title>My page</title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-        </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <StyledThemeProvider theme={styledTheme}>
