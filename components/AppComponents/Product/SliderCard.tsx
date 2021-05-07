@@ -1,10 +1,13 @@
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import { ServiceCollection } from "../../../@types";
 
 const Root = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -19,35 +22,44 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 `;
 
 const Title = styled.div`
-  color: #333;
+  padding-top: 10px;
+  color: ${(props) => props.theme.palette.primary.dark};
   font-size: 1.15rem;
+  text-shadow: 10px 0 30px #fff;
   font-weight: bold;
 `;
 
-interface Props {
-  title: string;
-  url: string;
-  img: string;
-}
+type ServiceCard = Pick<
+  ServiceCollection,
+  "serviceName" | "servicePicture" | "slug" | "uuid"
+>;
 
 const SliderCard = ({
-  img = "https://firebasestorage.googleapis.com/v0/b/munay-nextjs-hefesto.appspot.com/o/adonis%2Fgallery%2F1-7.webp?alt=media",
-  title = "Placeholder title",
-  url = "#",
-}: Partial<Props>) => {
+  serviceName,
+  servicePicture,
+  slug,
+  uuid,
+}: ServiceCard) => {
   return (
-    <Root>
-      <ImageContainer>
-        <Image src={img} />
-      </ImageContainer>
-      <Title>{title}</Title>
-    </Root>
+    <Link href={`/servicos/${slug}`}>
+      <a>
+        <Root>
+          <ImageContainer>
+            <Image
+              alt={servicePicture.imageDescription}
+              src={servicePicture.imageURL}
+            />
+          </ImageContainer>
+          <Title>{serviceName}</Title>
+        </Root>
+      </a>
+    </Link>
   );
 };
 

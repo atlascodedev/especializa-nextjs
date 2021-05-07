@@ -129,7 +129,7 @@ export const getStaticProps = async () => {
   );
 
   const serviceRequest: AxiosResponse<ServiceCollection[]> = await axios.get(
-    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/service"
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/services"
   );
 
   const testimonialRequest: AxiosResponse<
@@ -170,7 +170,7 @@ export default function Home({
   services,
   testimonials,
 }: HomePageProps) {
-  console.log(partners);
+  console.log(services);
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -193,7 +193,7 @@ export default function Home({
 
     {
       label: "Serviços",
-      component: <Product />,
+      component: <Product serviceList={services} />,
       ref: null,
       hidden: false,
     },

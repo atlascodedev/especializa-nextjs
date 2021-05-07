@@ -3,6 +3,7 @@ import SwiperCore, { A11y, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from "styled-components";
 import SliderCard from "./SliderCard";
+import { ProductSectionProps } from ".";
 
 // When a Swiper slider is inside a CSS Grid or sometimes a flexbox, the "fix" below must be applied so it gets properly calculated
 
@@ -41,11 +42,9 @@ const Root = styled.div`
 
 SwiperCore.use([A11y, Pagination, Navigation]);
 
-interface Props {
-  slidersItems: any[];
-}
+interface Props extends ProductSectionProps {}
 
-const Slider: React.FC<Props> = ({ children, slidersItems }) => {
+const Slider: React.FC<Props> = ({ children, serviceList }) => {
   return (
     <Root>
       <Swiper
@@ -68,10 +67,15 @@ const Slider: React.FC<Props> = ({ children, slidersItems }) => {
           },
         }}
       >
-        {slidersItems.map((value: any, index: number) => {
+        {serviceList.map((value, index: number) => {
           return (
             <SwiperSlide key={index}>
-              <SliderCard />
+              <SliderCard
+                serviceName={value.serviceName}
+                servicePicture={value.servicePicture}
+                slug={value.slug}
+                uuid={value.uuid}
+              />
             </SwiperSlide>
           );
         })}

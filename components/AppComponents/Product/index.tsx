@@ -1,6 +1,7 @@
 import React from "react";
 import InView from "react-intersection-observer";
 import styled from "styled-components";
+import { ServiceCollection } from "../../../@types";
 import Background from "./Background";
 import BusinessManImage from "./BusinessManImage";
 import Circle from "./Circle";
@@ -48,9 +49,11 @@ const ContentSliderOuterContainer = styled.div`
   }
 `;
 
-interface Props {}
+export interface ProductSectionProps {
+  serviceList: ServiceCollection[];
+}
 
-const Product = (props: Props) => {
+const Product = ({ serviceList }: ProductSectionProps) => {
   return (
     <InView triggerOnce={false} threshold={0.3}>
       {({ entry, inView, ref }) => {
@@ -65,7 +68,7 @@ const Product = (props: Props) => {
 
                 <ContentSliderOuterContainer>
                   <Text />
-                  <Slider slidersItems={[1, 1, 1, 1, 1, 1, 1]} />
+                  <Slider serviceList={serviceList} />
 
                   <SliderControls />
                 </ContentSliderOuterContainer>
