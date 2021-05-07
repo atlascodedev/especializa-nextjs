@@ -97,6 +97,41 @@ const ArrowDownContainer = styled(motion.div)`
   }
 `;
 
+const AboutCourseRoot = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 7% 7%;
+
+  @media (min-width: 1024px) {
+    padding: 5%;
+  }
+`;
+
+const AboutCourseContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+const AboutCourseTitle = styled.div`
+  color: ${(props) => props.theme.palette.primary.main};
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2.5%;
+
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
+  }
+  @media (min-width: 1600px) {
+    font-size: 4rem;
+  }
+`;
+
+const AboutCourseText = styled.div`
+  color: #333;
+`;
+
 const PlacePage = (props: CourseCollection) => {
   const arrowControls = useAnimation();
 
@@ -149,6 +184,46 @@ const PlacePage = (props: CourseCollection) => {
               </CourseAreaLevel>
             </HeroInnerContainer>
           </HeroContainer>
+
+          <AboutCourseRoot>
+            <AboutCourseContainer>
+              <AboutCourseTitle>Sobre este curso</AboutCourseTitle>
+              <AboutCourseText>
+                {props.courseDescription} Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Unde, neque expedita praesentium
+                exercitationem veniam dignissimos pariatur autem, aliquid
+                voluptatem cum, numquam sequi. Ipsam dolorem doloribus quaerat
+                dolor, delectus omnis quos consequuntur et. Consequatur adipisci
+                accusamus quasi cumque vitae, itaque non laborum quidem? Nihil
+                excepturi nam minima vitae fugit! Quod asperiores culpa nihil,
+                dolorem itaque at tempora, deserunt accusantium quas, veritatis
+                sequi fugit natus doloremque quia. Doloribus praesentium
+                repudiandae necessitatibus deserunt ratione. Voluptatum ex esse
+                maiores iure distinctio saepe ut reiciendis asperiores est
+                explicabo error alias officiis dolorem tenetur, temporibus
+                pariatur aut eligendi minus, praesentium nam cum eos earum ipsa!
+                Suscipit eius accusamus dolores nobis odio magni eaque
+                reiciendis nesciunt doloremque nisi ducimus inventore itaque
+                veniam tempore, sint voluptatum blanditiis maxime minus
+                reprehenderit quod eos tenetur quidem laboriosam? Accusamus
+                ullam, voluptatibus nobis illo possimus eligendi fugit enim
+                sequi vitae necessitatibus expedita fuga commodi, omnis eius
+                vero saepe et ut ipsa. Provident, quidem! Ipsum impedit iste,
+                autem commodi deleniti voluptas, vitae sapiente esse mollitia
+                dignissimos excepturi numquam modi repudiandae facilis doloribus
+                sed velit, deserunt tenetur molestias aliquam maxime labore
+                placeat? Possimus quaerat, qui minima eveniet explicabo alias
+                ratione ipsum, animi, in quo facere asperiores fuga obcaecati
+                autem cum ea rerum dicta unde? Deleniti pariatur, debitis
+                dolorem, sint rem consequatur dignissimos optio, atque facere
+                tempore sequi voluptatem asperiores quam laborum ullam nulla
+                quos. Ullam quidem aperiam dolorum minima facere officiis
+                aspernatur ut ducimus itaque eos maxime vel quis possimus ea,
+                cum nostrum harum porro quo? Blanditiis libero eligendi harum
+                quidem recusandae! Et, inventore?{" "}
+              </AboutCourseText>
+            </AboutCourseContainer>
+          </AboutCourseRoot>
         </Root>
       </AppLayout>
     </React.Fragment>
