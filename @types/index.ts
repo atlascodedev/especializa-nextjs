@@ -73,7 +73,7 @@ export interface BlogCollection extends HefestoCollection {
     imageDescription: string;
   };
   blogActive: boolean;
-  blogPost: boolean;
+  blogPost: string;
 }
 
 export interface TestimonialCollection extends HefestoCollection {

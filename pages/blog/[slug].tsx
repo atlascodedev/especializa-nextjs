@@ -116,7 +116,7 @@ export default BlogTemplate;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogPostRequest: AxiosResponse<BlogPostType[]> = await axios.get(
-    "https://us-central1-munay-nextjs-hefesto.cloudfunctions.net/api/collections/entries/portalBlog"
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/portalBlog"
   );
 
   const blogPostData = blogPostRequest.data;
@@ -132,7 +132,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const blogPostWhereLikeSlugRequest: AxiosResponse<BlogPostType> = await axios.post(
-    "https://us-central1-munay-nextjs-hefesto.cloudfunctions.net/api/collections/entries/portalBlog/where",
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/portalBlog/where",
     {
       key: "slug",
       value: params.slug,

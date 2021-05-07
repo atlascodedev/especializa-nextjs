@@ -8,7 +8,7 @@ import {
   Add,
 } from "@material-ui/icons";
 import Link from "next/link";
-import { BlogPostType } from "../../../../@types";
+import { BlogCollection, BlogPostType } from "../../../../@types";
 import converToSlug from "../../../../helper/convertToSlug";
 import readingTime from "../../../../helper/readTime";
 
@@ -230,14 +230,16 @@ const PostCardMain = ({
 };
 
 interface Props {
-  blogPosts: BlogPostType[];
+  blogPosts: BlogCollection[];
 }
 
 const Posts = ({ blogPosts }: Props) => {
   const [visiblePostList, setVisiblePostList] = React.useState<
-    Array<BlogPostType>
+    Array<BlogCollection>
   >([]);
-  const [postListState, setPostList] = React.useState<Array<BlogPostType>>([]);
+  const [postListState, setPostList] = React.useState<Array<BlogCollection>>(
+    []
+  );
 
   React.useEffect(() => {
     let localPostList = blogPosts;
@@ -282,6 +284,7 @@ const Posts = ({ blogPosts }: Props) => {
               (
                 {
                   blogActive,
+                  blogDescription,
                   blogPost,
                   blogTitle,
                   featuredImage,
@@ -296,7 +299,7 @@ const Posts = ({ blogPosts }: Props) => {
                       <a>
                         <PostCardMain
                           key={id}
-                          readTime={Math.floor(
+                          readTime={Math.ceil(
                             readingTime(blogPost).readTime
                           ).toString()}
                           blogActive={blogActive}

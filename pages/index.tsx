@@ -214,7 +214,7 @@ export default function Home({
 
     {
       label: "Blog",
-      component: <Posts blogPosts={fakeBlogPost(10) as BlogPostType[]} />,
+      component: <Posts blogPosts={blog} />,
       ref: null,
       hidden: false,
     },
