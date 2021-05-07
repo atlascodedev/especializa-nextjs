@@ -119,7 +119,7 @@ const AboutCourseTitle = styled(motion.div)`
   color: ${(props) => props.theme.palette.primary.main};
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 2.5%;
+  margin-bottom: 3.5%;
 
   @media (min-width: 1024px) {
     font-size: 3.5rem;
@@ -131,6 +131,64 @@ const AboutCourseTitle = styled(motion.div)`
 
 const AboutCourseText = styled(motion.div)`
   color: #333;
+`;
+
+const CourseSyllabusRoot = styled.div`
+  width: 100%;
+  height: auto;
+  background-color: #eeeeee;
+  padding: 7% 7%;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    padding: 5%;
+  }
+`;
+
+const CourseSyllabusContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 60%;
+`;
+
+const CourseSyllabusTitle = styled(motion.div)`
+  color: ${(props) => props.theme.palette.primary.main};
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3.5%;
+
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
+  }
+  @media (min-width: 1600px) {
+    font-size: 4rem;
+  }
+`;
+
+const CourseSyllabusGrid = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 50% 50%;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 33.333% 33.333% 33.333%;
+  }
+`;
+
+const CourseSyllabusItem = styled.div<{ color?: string }>`
+  padding: 12px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  background-color: ${(props) => (props.color ? props.color : "#fff")};
+  text-align: center;
+  font-size: 10px;
+  color: #333;
+
+  @media (min-width: 1024px) {
+    font-size: 14px;
+  }
 `;
 
 const PlacePage = (props: CourseCollection) => {
@@ -231,6 +289,65 @@ const PlacePage = (props: CourseCollection) => {
               </InView>
             </AboutCourseContainer>
           </AboutCourseRoot>
+          <CourseSyllabusRoot>
+            <CourseSyllabusContainer>
+              <InView triggerOnce={false} threshold={0.5}>
+                {({ entry, inView, ref }) => (
+                  <CourseSyllabusTitle
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                    variants={{
+                      visible: { opacity: 1, y: 0 },
+                      hidden: { opacity: 0, y: 50 },
+                    }}
+                    transition={{ duration: 0.6, type: "keyframes" }}
+                    ref={ref}
+                  >
+                    Matriz curricular
+                  </CourseSyllabusTitle>
+                )}
+              </InView>
+
+              <CourseSyllabusGrid>
+                {[
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                  "item",
+                ].map((syllabusItem, index) => {
+                  return (
+                    <CourseSyllabusItem
+                      color={index % 2 === 0 ? "whitesmoke" : "#fff"}
+                    >
+                      {syllabusItem}
+                    </CourseSyllabusItem>
+                  );
+                })}
+              </CourseSyllabusGrid>
+            </CourseSyllabusContainer>
+          </CourseSyllabusRoot>
         </Root>
       </AppLayout>
     </React.Fragment>
