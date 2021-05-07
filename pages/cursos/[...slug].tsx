@@ -234,7 +234,7 @@ const CourseFormInnerContainer = styled.div`
 
 const CourseFormImageContainer = styled.div`
   display: none;
-  width: 100%;
+  width: 50%;
   position: relative;
   height: 40vw;
 
@@ -248,16 +248,15 @@ const CourseFormImage = styled.img`
   position: absolute;
   width: auto;
   height: 100%;
-  right: 15%;
+  right: 10%;
 `;
 
 const CourseFormWaves = styled.img`
   position: absolute;
   object-fit: contain;
-  width: 100%;
+  width: auto;
   height: auto;
   bottom: -2%;
-  right: 0;
 `;
 
 const CourseFormWrapper = styled.img`
