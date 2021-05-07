@@ -7,14 +7,15 @@ import SwiperCore, {
   Autoplay,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { TestimonialCollection } from "../../../../@types";
 
-interface TestimonialsProps {}
+interface TestimonialsProps {
+  testimonials: TestimonialCollection[];
+}
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, Autoplay]);
 
-const Testimonials = (props: TestimonialsProps) => {
-  const populateList: any = [1, 1, 1, 1, 1, 1, 1];
-
+const Testimonials = ({ testimonials }: TestimonialsProps) => {
   return (
     <TestimonialsLayout>
       <Swiper
@@ -38,16 +39,14 @@ const Testimonials = (props: TestimonialsProps) => {
           },
         }}
       >
-        {populateList.map((value, index) => {
+        {testimonials.map((value, index) => {
           return (
             <SwiperSlide key={index}>
               <TestimonialCard
-                imageURL="https://firebasestorage.googleapis.com/v0/b/munay-nextjs-hefesto.appspot.com/o/adonis%2Fgallery%2F1-7.webp?alt=media"
-                location="São Paulo/SP"
-                name="Jane Doe"
-                text={
-                  "“Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non  enim praesent elementum facilisis leo.”"
-                }
+                location={value.testimonialCompany}
+                name={value.testimonialName}
+                text={value.testimonialText}
+                imageURL={value.testimonialPicture.imageURL}
               />
             </SwiperSlide>
           );

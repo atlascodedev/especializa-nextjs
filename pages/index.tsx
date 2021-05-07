@@ -135,7 +135,7 @@ export const getStaticProps = async () => {
   const testimonialRequest: AxiosResponse<
     TestimonialCollection[]
   > = await axios.get(
-    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/testimonial"
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/testimonials"
   );
 
   const partnersCollection: AxiosResponse<
@@ -207,7 +207,7 @@ export default function Home({
 
     {
       label: "Depoimentos",
-      component: <Testimonials />,
+      component: <Testimonials testimonials={testimonials} />,
       ref: null,
       hidden: true,
     },
