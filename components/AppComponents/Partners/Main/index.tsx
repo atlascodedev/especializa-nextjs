@@ -2,14 +2,15 @@ import React from "react";
 import PartnersLayout, { PartnerCard } from "./styles";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { PartnerCollection } from "../../../../@types";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-interface PartnersProps {}
+interface PartnersProps {
+  items: PartnerCollection[];
+}
 
-const Partners = ({}: PartnersProps) => {
-  const populateList: any[] = [1, 1, 1, 1, 1, 1, 1];
-
+const Partners = ({ items }: PartnersProps) => {
   return (
     <PartnersLayout>
       <Swiper
@@ -20,14 +21,18 @@ const Partners = ({}: PartnersProps) => {
         centeredSlides
         breakpoints={{
           1024: {
-            slidesPerView: populateList.length >= 3 ? 3 : 1,
+            slidesPerView: items.length >= 3 ? 3 : 1,
           },
         }}
       >
-        {populateList.map((value, index) => {
+        {items.map((value, index) => {
           return (
             <SwiperSlide key={index}>
-              <PartnerCard />
+              <PartnerCard
+                imageURL={value.partnerLogo.imageURL}
+                name={value.partnerName}
+                websiteURL={value.partnerWebsite}
+              />
             </SwiperSlide>
           );
         })}

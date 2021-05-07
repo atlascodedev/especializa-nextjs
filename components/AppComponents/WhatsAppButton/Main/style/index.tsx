@@ -9,6 +9,7 @@ const Root = styled(motion.div)`
   position: fixed;
   bottom: 10%;
   left: 0;
+  z-index: 10000;
   width: auto;
   color: ${(props) => props.theme.palette.primary.contrastText};
   background: ${(props) => props.theme.palette.primary.light};

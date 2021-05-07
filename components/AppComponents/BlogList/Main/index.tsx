@@ -270,7 +270,6 @@ const Posts = ({ blogPosts }: Props) => {
     setVisiblePostList((prevState) => [...prevState, ...removeThree]);
   };
 
-  console.log(visiblePostList);
   return (
     <div>
       {visiblePostList.length > 0 ? (

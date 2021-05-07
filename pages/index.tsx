@@ -8,10 +8,19 @@ import Testimonials from "../components/AppComponents/Testimonials/Main";
 import Contact from "../components/AppComponents/Contact/Main";
 import Partners from "../components/AppComponents/Partners/Main";
 import Posts from "../components/AppComponents/BlogList/Main";
-import { BlogPostType, CourseCard } from "../@types";
+import {
+  BlogCollection,
+  BlogPostType,
+  CourseCard,
+  CourseCollection,
+  PartnerCollection,
+  ServiceCollection,
+  TestimonialCollection,
+} from "../@types";
 import * as faker from "faker";
 import Product from "../components/AppComponents/Product";
 import Courses from "../components/AppComponents/Courses";
+import axios, { AxiosResponse } from "axios";
 
 export type MenuItem = {
   menuName: string;
@@ -110,7 +119,59 @@ const fakeBlogPost = (amount?: number): BlogPostType | BlogPostType[] => {
   }
 };
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const blogRequest: AxiosResponse<BlogCollection[]> = await axios.get(
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/portalBlog"
+  );
+
+  const courseRequest: AxiosResponse<CourseCollection[]> = await axios.get(
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/coursesNew"
+  );
+
+  const serviceRequest: AxiosResponse<ServiceCollection[]> = await axios.get(
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/service"
+  );
+
+  const testimonialRequest: AxiosResponse<
+    TestimonialCollection[]
+  > = await axios.get(
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/testimonial"
+  );
+
+  const partnersCollection: AxiosResponse<
+    PartnerCollection[]
+  > = await axios.get(
+    "https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/partners"
+  );
+
+  return {
+    props: {
+      blog: blogRequest.data,
+      partners: partnersCollection.data,
+      testimonials: testimonialRequest.data,
+      services: serviceRequest.data,
+      courses: courseRequest.data,
+    },
+  };
+};
+
+interface HomePageProps {
+  blog: BlogCollection[];
+  partners: PartnerCollection[];
+  testimonials: TestimonialCollection[];
+  services: ServiceCollection[];
+  courses: CourseCollection[];
+}
+
+export default function Home({
+  blog,
+  courses,
+  partners,
+  services,
+  testimonials,
+}: HomePageProps) {
+  console.log(partners);
+
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const contactSectionRef = React.useRef<HTMLDivElement>(null);
@@ -166,7 +227,7 @@ export default function Home() {
     },
     {
       label: "Parceiros",
-      component: <Partners />,
+      component: <Partners items={partners} />,
       ref: null,
       hidden: false,
     },

@@ -76,7 +76,7 @@ export const PartnerCard = ({
 }: PartnerCardProps) => {
   return (
     <CardRoot>
-      <ListItem href={websiteURL} component={"a"}>
+      <ListItem href={websiteURL} target={"_blank"} component={"a"}>
         <img src={imageURL} alt={`${name} - logo`} />
       </ListItem>
     </CardRoot>
