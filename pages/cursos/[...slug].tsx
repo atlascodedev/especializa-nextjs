@@ -204,7 +204,7 @@ const CourseFormContainer = styled.div`
   flex-direction: column;
 `;
 
-const CourseFormTitle = styled.div`
+const CourseFormTitle = styled(motion.div)`
   color: ${(props) => props.theme.palette.primary.contrastText};
   font-size: 1.5rem;
   font-weight: 600;
@@ -243,7 +243,7 @@ const CourseFormImageContainer = styled.div`
   }
 `;
 
-const CourseFormImage = styled.img`
+const CourseFormImage = styled(motion.img)`
   object-fit: cover;
   position: absolute;
   width: auto;
@@ -251,16 +251,12 @@ const CourseFormImage = styled.img`
   right: 10%;
 `;
 
-const CourseFormWaves = styled.img`
+const CourseFormWaves = styled(motion.img)`
   position: absolute;
   object-fit: contain;
   width: auto;
   height: auto;
   bottom: -2%;
-`;
-
-const CourseFormWrapper = styled.img`
-  padding: 5%;
 `;
 
 const CoursePage: React.FC<CourseCollection> = (props) => {
@@ -399,35 +395,72 @@ const CoursePage: React.FC<CourseCollection> = (props) => {
               </CourseSyllabusGrid>
             </CourseSyllabusContainer>
           </CourseSyllabusRoot>
-          <CourseFormRoot>
-            <CourseFormContainer>
-              <CourseFormTitle>
-                Fale conosco, ficaremos felizes em atendê-lo.
-              </CourseFormTitle>
 
-              <CourseFormInnerContainer>
-                <div
-                  style={{
-                    padding:
-                      global.window && global.window.innerWidth < 1024
-                        ? "8%"
-                        : "0px",
-                  }}
-                >
-                  <ContactForm loadingFn={() => console.log("ok")} />
-                </div>
+          <InView triggerOnce={false} threshold={0.5}>
+            {({ entry, inView, ref }) => {
+              return (
+                <CourseFormRoot ref={ref}>
+                  <CourseFormContainer>
+                    <InView>
+                      {({ entry, inView: innerView, ref: innerRef }) => {
+                        return (
+                          <CourseFormTitle
+                            initial="hidden"
+                            animate={innerView ? "visible" : "hidden"}
+                            variants={{
+                              visible: { opacity: 1, y: 0 },
+                              hidden: { opacity: 0, y: 50 },
+                            }}
+                            transition={{ duration: 0.6, type: "keyframes" }}
+                            ref={innerRef}
+                          >
+                            Fale conosco, ficaremos felizes em atendê-lo.
+                          </CourseFormTitle>
+                        );
+                      }}
+                    </InView>
 
-                <CourseFormImageContainer>
-                  <CourseFormImage
-                    src={
-                      "https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fpost-contact.webp?alt=media"
-                    }
-                  />
-                  <CourseFormWaves src="https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fwaves.webp?alt=media" />
-                </CourseFormImageContainer>
-              </CourseFormInnerContainer>
-            </CourseFormContainer>
-          </CourseFormRoot>
+                    <CourseFormInnerContainer>
+                      <div
+                        style={{
+                          padding:
+                            global.window && global.window.innerWidth < 1024
+                              ? "8%"
+                              : "0px",
+                        }}
+                      >
+                        <ContactForm loadingFn={() => console.log("ok")} />
+                      </div>
+
+                      <CourseFormImageContainer>
+                        <CourseFormImage
+                          initial="hidden"
+                          animate={inView ? "visible" : "hidden"}
+                          variants={{
+                            visible: { x: 0, opacity: 1 },
+                            hidden: { x: "100%", opacity: 0 },
+                          }}
+                          transition={{ delay: 0.2, duration: 1 }}
+                          src={
+                            "https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fpost-contact.webp?alt=media"
+                          }
+                        />
+                        <CourseFormWaves
+                          initial="hidden"
+                          animate={inView ? "visible" : "hidden"}
+                          variants={{
+                            visible: { opacity: 1 },
+                            hidden: { opacity: 0 },
+                          }}
+                          src="https://firebasestorage.googleapis.com/v0/b/especializa-next-hefesto.appspot.com/o/adonis%2Fgallery%2Fwaves.webp?alt=media"
+                        />
+                      </CourseFormImageContainer>
+                    </CourseFormInnerContainer>
+                  </CourseFormContainer>
+                </CourseFormRoot>
+              );
+            }}
+          </InView>
         </Root>
       </AppLayout>
     </div>
