@@ -37,7 +37,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
     <div id="top">
       <LayoutDrawer
         backgroundColor
-        logo="/logo.svg"
+        logo="/images/logo.svg"
         open={drawerVisibility}
         toggleDrawer={toggleDrawerVisibility}
         sidebarItems={items}

@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import scrollPolyfill from "../scrollIntoViewPolyfill";
 import converToSlug from "../convertToSlug";
+import returnHome from "../returnHome";
 
 const scrollIntoView = (
   menuName: string,
@@ -26,7 +27,7 @@ const scrollIntoView = (
       callback();
     }
   } else {
-    global.window.history.go(0);
+    returnHome();
   }
 };
 

@@ -88,10 +88,16 @@ const BlogTemplate = (props: BlogPostType) => {
   return (
     <React.Fragment>
       <Head>
-        <title>{props.blogTitle} - Portal Bens Contemplados</title>
+        <title>{props.blogTitle} - Consultoria Especializa</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AppLayout hideOnScroll={false} isGlobalLoading={false} items={[]}>
+      <AppLayout
+        hideOnScroll={false}
+        isGlobalLoading={false}
+        items={[
+          { label: "Voltar à pagina principal", ref: null, hidden: false },
+        ]}
+      >
         <div style={{ marginLeft: "10%", marginRight: "10%" }}>
           <BlogPostInnerDescriptionContainer>
             <BlogPostTitle>{props.blogTitle}</BlogPostTitle>

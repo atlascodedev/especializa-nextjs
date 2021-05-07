@@ -99,7 +99,9 @@ const LayoutDrawer = ({
                   <ListItemIcon>
                     <SvgIcon component={Grade} />
                   </ListItemIcon>
-                  <ListItemText>{item.label}</ListItemText>
+                  <ListItemText style={{ padding: "5px 30px 5px 5px" }}>
+                    {item.label}
+                  </ListItemText>
                 </ListItem>
               );
             }
