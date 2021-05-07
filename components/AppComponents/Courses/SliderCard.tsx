@@ -3,7 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import * as faker from "faker";
 import { motion } from "framer-motion";
-import { CourseCard } from "../../../@types";
+import { CourseCollection } from "../../../@types";
+import Link from "next/link";
+import convertToSlug from "../../../helper/convertToSlug";
 
 const Root = styled(motion.div)<{ active: boolean }>`
   height: 425px;
@@ -19,6 +21,7 @@ const Root = styled(motion.div)<{ active: boolean }>`
 
   @media (min-width: 1024px) {
     height: 500px;
+    max-width: 400px;
   }
 `;
 
@@ -57,20 +60,41 @@ const InfoButton = styled(motion(ButtonBase))`
   font-weight: 600;
 `;
 
+type CourseCard = Pick<
+  CourseCollection,
+  "courseArea" | "courseImage" | "courseName" | "slug" | "uuid" | "courseLevel"
+>;
+
 interface Props extends CourseCard {
   active?: boolean;
 }
 
-const SliderCard = ({ active, imageURL, subTitle, title }: Props) => {
+const SliderCard = ({
+  active,
+  courseArea,
+  courseImage,
+  courseLevel,
+  courseName,
+  slug,
+  uuid,
+}: Props) => {
   return (
     <Root active={active}>
       <Container>
-        <Image src={imageURL} />
+        <Image src={courseImage.imageURL} />
         <InfoContainer>
-          <InfoTitle>{title}</InfoTitle>
-          <InfoSubTitle>Curso de {subTitle}</InfoSubTitle>
+          <InfoTitle>{courseName}</InfoTitle>
+          <InfoSubTitle>
+            Curso de {courseArea} - {courseLevel}
+          </InfoSubTitle>
           <InfoButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            Saiba mais
+            <Link
+              href={`/cursos/${convertToSlug(courseLevel)}/${convertToSlug(
+                courseArea
+              )}/${slug}/${uuid}`}
+            >
+              <a>Saiba mais</a>
+            </Link>
           </InfoButton>
         </InfoContainer>
       </Container>

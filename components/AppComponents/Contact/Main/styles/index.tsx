@@ -49,11 +49,11 @@ const ContactInnerImageContainer = styled(motion.div)`
     display: block;
     min-width: 43%;
     order: 1;
-    height: 100vh;
+    height: 40vw;
   }
 
   @media (min-width: 1600px) {
-    height: 110vh;
+    height: 50vw;
   }
 `;
 
@@ -96,7 +96,7 @@ const ContactLayoutContainer = ({
                 <img
                   style={{
                     transform: "rotateY(180deg)",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     width: "100%",
                     height: "100%",
                     position: "absolute",

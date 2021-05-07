@@ -200,7 +200,7 @@ export default function Home({
 
     {
       label: "Cursos",
-      component: <Courses slidersItems={fakeCourseCard(10) as CourseCard[]} />,
+      component: <Courses slidersItems={courses} />,
       ref: null,
       hidden: false,
     },

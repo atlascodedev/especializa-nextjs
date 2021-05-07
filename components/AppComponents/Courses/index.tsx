@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CourseCard } from "../../../@types";
+import { CourseCard, CourseCollection } from "../../../@types";
 import SectionTitle from "./SectionTitle";
 import Slider from "./Slider";
 
@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 
 export interface CoursesProps {
-  slidersItems: CourseCard[];
+  slidersItems: CourseCollection[];
 }
 
 const Courses = ({ slidersItems }: CoursesProps) => {

@@ -50,10 +50,12 @@ const Slider = ({ slidersItems }: Props) => {
             <SwiperSlide key={index}>
               {(props) => (
                 <SliderCard
-                  imageURL={value.imageURL}
-                  subTitle={value.subTitle}
-                  title={value.title}
-                  to={value.to}
+                  courseArea={value.courseArea}
+                  courseImage={value.courseImage}
+                  courseLevel={value.courseLevel}
+                  courseName={value.courseName}
+                  slug={value.slug}
+                  uuid={value.uuid}
                   active={props.isActive}
                 />
               )}

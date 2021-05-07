@@ -41,7 +41,7 @@ export const getStaticProps = async ({ params }) => {
   // console.log(params);
 
   const courseRequestByID: AxiosResponse<CourseCollection> = await axios.get(
-    `https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entrie/coursesNew/${params.slug[3]}`
+    `https://us-central1-especializa-next-hefesto.cloudfunctions.net/api/collections/entries/coursesNew/${params.slug[3]}`
   );
 
   const courseRequestByIDData = courseRequestByID.data;
