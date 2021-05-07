@@ -60,6 +60,7 @@ const PostListSectionTitle = styled.div`
   text-align: center;
   @media (min-width: 1024px) {
     font-size: 40px;
+    padding: 0px;
   }
 `;
 
@@ -73,6 +74,7 @@ const PostListContainer = styled.div`
   @media (min-width: 1024px) {
     grid-template-rows: none;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: 0px;
   }
 `;
 

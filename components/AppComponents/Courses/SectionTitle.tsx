@@ -12,6 +12,10 @@ const Root = styled.div`
   justify-content: center;
   text-align: center;
   margin-top: 15%;
+
+  @media (min-width: 1024px) {
+    margin-top: 5%;
+  }
 `;
 
 const SectionTitle: React.FC<Props> = ({ children }) => {

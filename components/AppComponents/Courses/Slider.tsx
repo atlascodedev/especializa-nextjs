@@ -13,7 +13,7 @@ const Root = styled.div`
   height: auto;
 
   .swiper-container {
-    padding: 10vh 0px;
+    padding: 5vh 0px 8vh 0px;
   }
 
   .swiper-slide {

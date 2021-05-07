@@ -16,6 +16,7 @@ interface AppLayoutProps extends AppLayoutNavbarProps {
   isGlobalLoading: boolean;
   items: MenuItem[];
   scrollTopButton?: boolean | null;
+  anchored?: boolean;
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({
@@ -24,6 +25,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
   items,
   hideOnScroll,
   scrollTopButton,
+  anchored = true,
 }) => {
   const [drawerVisibility, setDrawerVisibility] = React.useState<boolean>(
     false
@@ -47,7 +49,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
         hideOnScroll={hideOnScroll}
         toggleDrawer={toggleDrawerVisibility}
       />
-      <Anchor anchored={true} />
+      {anchored ? <Anchor anchored={anchored} /> : null}
 
       <Loading isLoading={isGlobalLoading} />
       {children}
