@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Button } from "@material-ui/core";
+import scrollIntoView from "../../../../../helper/scrollIntoView";
 
 const Root = styled.div`
   width: 100%;
@@ -125,6 +126,7 @@ const HeroLayout = ({}: HeroLayoutProps) => {
           </AuxText>
           <ButtonsContainer>
             <Button
+              onClick={() => scrollIntoView("Contato", null)}
               className="main"
               size={
                 global.window && global.window.innerWidth < 1024
@@ -138,6 +140,7 @@ const HeroLayout = ({}: HeroLayoutProps) => {
             </Button>
 
             <Button
+              onClick={() => scrollIntoView("Serviços", null)}
               size={
                 global.window && global.window.innerWidth < 1024
                   ? "small"
