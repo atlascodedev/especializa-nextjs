@@ -181,7 +181,7 @@ export default function Home({
       label: "Hero",
       component: <Hero />,
       ref: null,
-      hidden: false,
+      hidden: true,
     },
 
     {
