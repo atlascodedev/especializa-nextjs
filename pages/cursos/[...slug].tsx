@@ -6,7 +6,7 @@ import AppLayout from "../../layout/AppLayout";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { SvgIcon } from "@material-ui/core";
-import { ArrowDownward, PowerOffSharp } from "@material-ui/icons";
+import { ArrowDownward } from "@material-ui/icons";
 import { InView } from "react-intersection-observer";
 import Head from "next/head";
 import ContactForm from "../../components/AppComponents/Contact/Form";
