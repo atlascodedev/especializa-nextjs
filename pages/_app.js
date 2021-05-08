@@ -13,7 +13,7 @@ require("swiper/components/effect-fade/effect-fade.min.css");
 require("swiper/components/scrollbar/scrollbar.min.css");
 require("swiper/components/lazy/lazy.min.css");
 
-class MyApp extends App {
+export default class MyApp extends App {
   componentDidMount() {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -36,5 +36,3 @@ class MyApp extends App {
     );
   }
 }
-
-export default MyApp;

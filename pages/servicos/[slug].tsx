@@ -8,6 +8,8 @@ import { motion, useAnimation, Variants } from "framer-motion";
 import TextRevealAnimation from "../../components/Util/TextRevealAnimation";
 import { ArrowDownward } from "@material-ui/icons";
 import { SvgIcon } from "@material-ui/core";
+import ContactForm from "../../components/AppComponents/Contact/Form";
+import dynamic from "next/dynamic";
 
 const Root = styled.div``;
 
@@ -71,9 +73,48 @@ const ServiceContentContainer = styled.div`
   }
 `;
 
+const ServiceFormRoot = styled.div`
+  width: 100%;
+  height: auto;
+  background-color: ${(props) => props.theme.palette.primary.main};
+`;
+
+const ServiceFormContainer = styled.div`
+  display: flex;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    padding: 3%;
+  }
+`;
+const FormRoot = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+`;
+
+const TextRoot = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 1024px) {
+    width: 50%;
+    font-size: 2.25rem;
+  }
+  flex-direction: column;
+  color: ${(props) => props.theme.palette.primary.contrastText};
+`;
+
+const DynamicTextAnimation = dynamic(
+  () => import("../../components/Util/TextRevealAnimation")
+);
+
 const ServicePage = (props: ServiceCollection) => {
   const animateLine = useAnimation();
-
   const arrowControls = useAnimation();
 
   React.useEffect(() => {
@@ -149,6 +190,23 @@ const ServicePage = (props: ServiceCollection) => {
               dangerouslySetInnerHTML={{ __html: props.serviceContent }}
             ></div>
           </ServiceContentContainer>
+
+          <ServiceFormRoot>
+            <ServiceFormContainer>
+              <FormRoot>
+                <ContactForm loadingFn={() => console.log("abc")} />
+              </FormRoot>
+              <TextRoot>
+                <TextRevealAnimation
+                  text={
+                    "Ficou com alguma dúvida? Entre em contato conosco. Nossos representantes ficarão felizes em atendê-lo(a)."
+                  }
+                  triggerOnView={true}
+                  staggerDelay={0.035}
+                />
+              </TextRoot>
+            </ServiceFormContainer>
+          </ServiceFormRoot>
         </Root>
       </AppLayout>
     </div>

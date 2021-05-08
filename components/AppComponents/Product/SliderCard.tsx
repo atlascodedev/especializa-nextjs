@@ -48,7 +48,7 @@ const SliderCard = ({
 }: ServiceCard) => {
   return (
     <Link href={`/servicos/${slug}`}>
-      <a>
+      <a style={{ display: "flex", justifyContent: "center" }}>
         <Root>
           <ImageContainer>
             <Image
