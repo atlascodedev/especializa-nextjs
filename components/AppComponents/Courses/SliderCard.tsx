@@ -13,7 +13,6 @@ const Root = styled(motion.div)<{ active: boolean }>`
   background-color: #fff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-
   transform: ${(props) => (props.active ? `scale(1)` : "scale(0.75)")};
   filter: ${(props) => (props.active ? "grayscale(0)" : "grayscale(1)")};
   opacity: ${(props) => (props.active ? "1" : "0.5")};

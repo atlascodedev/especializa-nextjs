@@ -8,6 +8,7 @@ const Root = styled.div`
   flex-direction: column;
   width: 90%;
   cursor: pointer;
+  border-radius: 6px;
 `;
 
 const ImageContainer = styled.div`
@@ -15,6 +16,7 @@ const ImageContainer = styled.div`
   height: 269px;
   background-color: #fff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
 
   @media (min-width: 1024px) {
     height: 441px;

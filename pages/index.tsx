@@ -238,7 +238,7 @@ export default function Home({
       <Head>
         <title>
           Consultoria Especializa - Serviços acadêmicos, pedagógicos e de
-          secretaria
+          secretaria.
         </title>
 
         <link rel="icon" href="/favicon.ico" />

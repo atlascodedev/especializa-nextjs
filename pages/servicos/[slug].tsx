@@ -82,36 +82,40 @@ const ServiceFormRoot = styled.div`
 const ServiceFormContainer = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
 
   @media (min-width: 1024px) {
     padding: 3%;
+    flex-direction: row;
   }
 `;
 const FormRoot = styled.div`
   width: 100%;
   display: flex;
+  order: 1;
+  padding: 20px;
   justify-content: center;
   @media (min-width: 1024px) {
     width: 50%;
+    order: 0;
   }
 `;
 
 const TextRoot = styled.div`
+  order: 0;
   display: flex;
   width: 100%;
+  padding: 35px 20px;
   align-items: center;
   justify-content: center;
   @media (min-width: 1024px) {
+    order: 1;
     width: 50%;
     font-size: 2.25rem;
   }
   flex-direction: column;
   color: ${(props) => props.theme.palette.primary.contrastText};
 `;
-
-const DynamicTextAnimation = dynamic(
-  () => import("../../components/Util/TextRevealAnimation")
-);
 
 const ServicePage = (props: ServiceCollection) => {
   const animateLine = useAnimation();
@@ -203,6 +207,7 @@ const ServicePage = (props: ServiceCollection) => {
                   }
                   triggerOnView={true}
                   staggerDelay={0.035}
+                  triggerOnce={true}
                 />
               </TextRoot>
             </ServiceFormContainer>
