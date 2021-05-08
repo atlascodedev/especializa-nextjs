@@ -211,6 +211,7 @@ const CourseFormTitle = styled(motion.div)`
   text-align: center;
   margin-bottom: 3.5%;
   margin-top: 3.5%;
+  padding: 15px;
 
   @media (min-width: 1024px) {
     font-size: 3rem;
@@ -237,7 +238,7 @@ const FormContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 2%;
+  padding: 25px;
   height: auto;
 
   @media (min-width: 1024px) {
