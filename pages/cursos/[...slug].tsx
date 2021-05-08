@@ -225,18 +225,34 @@ const CourseFormInnerContainer = styled.div`
   justify-content: center;
   width: 100%;
   overflow: hidden;
+  position: relative;
 
   @media (min-width: 1024px) {
-    justify-content: space-around;
+    justify-content: flex-start;
     padding-left: 5%;
+  }
+`;
+
+const FormContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  height: auto;
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    padding: 2.5%;
   }
 `;
 
 const CourseFormImageContainer = styled.div`
   display: none;
   width: 50%;
-  position: relative;
-  height: 40vw;
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  right: 0;
 
   @media (min-width: 1024px) {
     display: block;
@@ -247,16 +263,23 @@ const CourseFormImage = styled(motion.img)`
   object-fit: cover;
   position: absolute;
   width: auto;
-  height: 100%;
-  right: 10%;
+  height: 90%;
+  right: 2%;
+  bottom: 5%;
+  z-index: 100;
+
+  @media (min-width: 1600px) {
+    right: 10%;
+  }
 `;
 
 const CourseFormWaves = styled(motion.img)`
   position: absolute;
   object-fit: contain;
-  width: auto;
+  width: 100%;
   height: auto;
   bottom: -2%;
+  z-index: 110;
 `;
 
 const CoursePage: React.FC<CourseCollection> = (props) => {
@@ -421,16 +444,9 @@ const CoursePage: React.FC<CourseCollection> = (props) => {
                     </InView>
 
                     <CourseFormInnerContainer>
-                      <div
-                        style={{
-                          padding:
-                            global.window && global.window.innerWidth < 1024
-                              ? "8%"
-                              : "0px",
-                        }}
-                      >
+                      <FormContainer>
                         <ContactForm loadingFn={() => console.log("ok")} />
-                      </div>
+                      </FormContainer>
 
                       <CourseFormImageContainer>
                         <CourseFormImage

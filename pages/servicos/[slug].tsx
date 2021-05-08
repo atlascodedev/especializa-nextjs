@@ -13,17 +13,20 @@ const Root = styled.div``;
 
 const HeroContainer = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 90vh;
 
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.palette.primary.main};
-
-  font-size: 2.5rem;
-  padding: 0px 5%;
+  padding: 0px 15%;
+  font-size: 2rem;
   text-align: center;
+
+  @media (min-width: 1024px) {
+    font-size: 2.65rem;
+  }
 `;
 
 const ArrowDownContainer = styled(motion.div)`
@@ -52,7 +55,7 @@ const ServiceContentContainer = styled.div`
   overflow: hidden;
 
   * {
-    font-size: max(1rem, 4vh) !important;
+    font-size: max(1.5rem, 1vh) !important;
     line-height: 30px;
   }
   img {
@@ -62,7 +65,8 @@ const ServiceContentContainer = styled.div`
 
   @media (min-width: 1024px) {
     * {
-      line-height: 35px;
+      font-size: max(2rem, 2vh) !important;
+      line-height: 45px;
     }
   }
 `;
@@ -79,7 +83,7 @@ const ServicePage = (props: ServiceCollection) => {
   const contentRef = React.useRef<HTMLDivElement>(null);
 
   const scrollToContent = () => {
-    contentRef.current.scrollIntoView({ behavior: "smooth" });
+    contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
