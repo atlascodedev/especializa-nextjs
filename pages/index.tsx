@@ -229,7 +229,7 @@ export default function Home({
       label: "Parceiros",
       component: <Partners items={partners} />,
       ref: null,
-      hidden: false,
+      hidden: true,
     },
   ]);
 
