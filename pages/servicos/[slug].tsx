@@ -121,6 +121,12 @@ const ServicePage = (props: ServiceCollection) => {
   const animateLine = useAnimation();
   const arrowControls = useAnimation();
 
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const handleLoadingGlobal = (loading: boolean) => {
+    setLoading(loading);
+  };
+
   React.useEffect(() => {
     arrowControls.start("cycle");
   }, []);
@@ -139,7 +145,7 @@ const ServicePage = (props: ServiceCollection) => {
 
       <AppLayout
         hideOnScroll={false}
-        isGlobalLoading={false}
+        isGlobalLoading={loading}
         items={[
           { label: "Voltar à pagina principal", ref: null, hidden: false },
         ]}
@@ -198,7 +204,7 @@ const ServicePage = (props: ServiceCollection) => {
           <ServiceFormRoot>
             <ServiceFormContainer>
               <FormRoot>
-                <ContactForm loadingFn={() => console.log("abc")} />
+                <ContactForm loadingFn={handleLoadingGlobal} />
               </FormRoot>
               <TextRoot>
                 <TextRevealAnimation

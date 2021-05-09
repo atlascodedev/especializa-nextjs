@@ -286,6 +286,12 @@ const CourseFormWaves = styled(motion.img)`
 const CoursePage: React.FC<CourseCollection> = (props) => {
   const arrowControls = useAnimation();
 
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const handleLoadingGlobal = (loading: boolean) => {
+    setLoading(loading);
+  };
+
   React.useEffect(() => {
     arrowControls.start("cycle");
   }, []);
@@ -307,7 +313,7 @@ const CoursePage: React.FC<CourseCollection> = (props) => {
 
       <AppLayout
         hideOnScroll={false}
-        isGlobalLoading={false}
+        isGlobalLoading={loading}
         items={[
           { label: "Voltar à pagina principal", ref: null, hidden: false },
         ]}
@@ -446,7 +452,7 @@ const CoursePage: React.FC<CourseCollection> = (props) => {
 
                     <CourseFormInnerContainer>
                       <FormContainer>
-                        <ContactForm loadingFn={() => console.log("ok")} />
+                        <ContactForm loadingFn={handleLoadingGlobal} />
                       </FormContainer>
 
                       <CourseFormImageContainer>

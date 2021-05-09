@@ -8,7 +8,7 @@ const ContactFormRoot = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px 4px 6px 6px;
 
-  z-index: 50;
+  z-index: 5000;
   @media (min-width: 1024px) {
     width: 440px;
   }

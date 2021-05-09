@@ -62,7 +62,7 @@ const ContactForm = ({ loadingFn }: Props) => {
 
       axios
         .post(
-          "https://us-central1-atlascodedev-landing.cloudfunctions.net/api/sendMail/munay",
+          "https://us-central1-atlascodedev-landing.cloudfunctions.net/api/sendMail/consultoriaespecializa",
           {
             name: values.name,
             email: values.email,

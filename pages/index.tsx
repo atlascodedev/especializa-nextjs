@@ -172,7 +172,11 @@ export default function Home({
 }: HomePageProps) {
   console.log(services);
 
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const handleLoadingGlobal = (loading: boolean) => {
+    setLoading(loading);
+  };
 
   const contactSectionRef = React.useRef<HTMLDivElement>(null);
 
@@ -221,7 +225,7 @@ export default function Home({
 
     {
       label: "Contato",
-      component: <Contact loadingFn={() => console.log("not now")} />,
+      component: <Contact loadingFn={handleLoadingGlobal} />,
       ref: contactSectionRef,
       hidden: false,
     },
@@ -245,7 +249,7 @@ export default function Home({
       </Head>
 
       <AppLayout
-        isGlobalLoading={isLoading}
+        isGlobalLoading={loading}
         scrollTopButton
         hideOnScroll
         items={menuList}

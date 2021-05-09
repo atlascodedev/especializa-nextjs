@@ -85,6 +85,12 @@ const BlogPostMetadataContainer = styled.div`
 const BlogTemplate = (props: BlogPostType) => {
   console.log(props);
 
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const handleLoadingGlobal = (loading: boolean) => {
+    setLoading(loading);
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -93,7 +99,7 @@ const BlogTemplate = (props: BlogPostType) => {
       </Head>
       <AppLayout
         hideOnScroll={false}
-        isGlobalLoading={false}
+        isGlobalLoading={loading}
         items={[
           { label: "Voltar à pagina principal", ref: null, hidden: false },
         ]}
